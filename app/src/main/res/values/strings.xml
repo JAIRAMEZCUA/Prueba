@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyPrueba</string>
+    <string name="enroll">Enroll</string>
+    <string name="sign">Sign</string>
+    <string name="face_entity_resumen">Face / identity </string>
+    <string name="Tensor">T-F // ZOOM</string>
+</resources>

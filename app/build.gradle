@@ -1,0 +1,84 @@
+
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.myprueba"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+}
+
+
+dependencies {
+    //Manager
+    implementation(group: 'com.na_at.sdk', name: 'manager', version: "0.12.0_alpha_new", ext: 'aar'){
+        transitive=true
+    }
+    //Data
+    implementation(group: 'com.na_at.sdk', name: 'data', version: "0.12.0_alpha_new", ext: 'aar'){
+        transitive=true
+    }
+    //Commons
+    implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_alpha_new", ext: 'aar'){
+        transitive=true
+    }
+    //Face
+    implementation(group: 'com.na_at.sdk', name: 'face', version: "0.12.0_alpha_new", ext: 'aar'){
+        transitive=true
+    }
+    //identity
+    implementation(group: 'com.na_at.sdk', name: 'identity', version: "0.12.0_alpha_new", ext: 'aar'){
+        transitive=true
+    }
+    // camera widget
+    implementation(group: 'com.naat', name: 'camerawidget', version: '3.0.0', ext: 'aar'){
+        transitive=true
+    }
+    //zoom
+    implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
+    compile(group: 'com.na_at.sdk', name: 'face-zoom', version: '0.11.10', ext: 'aar')
+
+
+    //ml-vision
+    api 'com.google.firebase:firebase-ml-vision:18.0.2'
+    implementation 'com.google.firebase:firebase-ml-vision-face-model:17.0.2'
+    implementation(group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar')
+    //ocr engine
+    implementation(group: 'com.naat', name: 'ocr.sdk', version: '1.0.11.6', ext: 'aar')
+    // tensorflow
+    implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly') { changing = true }
+
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+apply plugin: 'com.google.gms.google-services'
+apply plugin: "com.jfrog.artifactory"
+apply plugin: "maven-publish"

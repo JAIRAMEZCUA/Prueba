@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "435553973838",
+    "firebase_url": "https://probandoapp-baa69.firebaseio.com",
+    "project_id": "probandoapp-baa69",
+    "storage_bucket": "probandoapp-baa69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435553973838:android:89a3c2970decf6c62bf51f",
+        "android_client_info": {
+          "package_name": "com.example.myprueba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435553973838-ql8apv70armsu5aaj0iia3abba9ajtpn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myprueba",
+            "certificate_hash": "91d76ad499b24d369fc7b64214539a9de790c137"
+          }
+        },
+        {
+          "client_id": "435553973838-8s107ih61aagp5ld3sr377c4cpioh7j1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxi0-SQdu5bMa3gc7sivvEbCNxRVj-h9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435553973838-8s107ih61aagp5ld3sr377c4cpioh7j1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
