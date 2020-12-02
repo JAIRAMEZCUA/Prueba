@@ -57,7 +57,7 @@ El SDK incluye los siguientes modulos:
 ### Setup ###
  Agregamos la dependencia en **build.gradle**:
 
-**Módulo Manager :**
+**Módulo Manager**:
     dependencies {
         implementation(group: 'com.na_at.sdk', name: 'manager', version: "0.12.0_alpha_new", ext: 'aar'){
             transitive=true
