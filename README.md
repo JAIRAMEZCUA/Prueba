@@ -54,24 +54,25 @@ El SDK incluye los siguientes modulos:
 
 
 ### Setup General ###
-**Note:** Todos los modulos necesitan implementar las siguientes dependencias
+**Nota:** Todos los modulos necesitan implementar las siguientes dependencias
  Agregamos la dependencia en **build.gradle**:
-        **Módulo Manager :**
+
+      ** Módulo Manager: **
             dependencies {
                 //Manager
                 implementation(group: 'com.na_at.sdk', name: 'manager', version: "0.12.0_alpha_new", ext: 'aar'){
                     transitive=true
             }
-        }
+      }
 
-      **Módulo Data :**
+      **Módulo Data:**
             dependencies {
                  //Data
                 implementation(group: 'com.na_at.sdk', name: 'data', version: "0.12.0_alpha_new", ext: 'aar'){
                     transitive=true
             }
       }
-     **Módulo Commons :**
+     **Módulo Commons:**
              dependencies {
                    //Commons
                    implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_alpha_new", ext: 'aar'){
