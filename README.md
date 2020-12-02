@@ -59,66 +59,9 @@ El SDK incluye los siguientes modulos:
 
 **Módulo Manager**:
     	dependencies {
-			//if possible, use v7:28.0.0 for android support version
-			//implementation 'com.android.support:appcompat-v7:28'
-			//implementation 'com.android.support:support-v4:28.0.0'
-			//implementation 'com.android.support:appcompat-v7:28.0.0'
-			//implementation 'com.android.support:exifinterface:28.0.0'
-
-			//Face Capture and Barcode reading. Only add if using acuantcamera or acuanthgliveness
-			implementation 'com.google.android.gms:play-services-vision:17.0.2'
-
-			//External library for MRZ reading. Only add if using the MRZ part of acuantcamera
-			implementation 'com.rmtheis:tess-two:9.0.0'
-
-			//external libraries for echip reading. Only add if using acuantechipreader
-			implementation group: 'com.github.mhshams', name: 'jnbis', version: '1.0.4'
-			implementation('org.jmrtd:jmrtd:0.7.11') {
-				transitive = true;
-			}
-			implementation('org.ejbca.cvc:cert-cvc:1.4.6') {
-				transitive = true;
-			}
-			implementation('org.bouncycastle:bcprov-jdk15on:1.61') {
-				transitive = true;
-			}
-			implementation('net.sf.scuba:scuba-sc-android:0.0.18') {
-				transitive = true;
-			}
-			//end echip reading
-
-			//internal common library
-			implementation project(path: ':acuantcommon')
-
-			//camera with autocapture - Uses camera 2 API
-			implementation project(path: ':acuantcamera')
-
-			//document parse, classification, authentication
-			implementation project(path: ':acuantdocumentprocessing')
-
-			//face match library
-			implementation project(path: ':acuantfacematchsdk')
-
-			//for reading epassport chips
-			implementation project(path: ':acuantechipreader')
-
-			//face capture and liveliness
-			implementation project(path: ':acuantipliveness')
-			implementation('com.iproov.sdk:iproov:5.2.1@aar') {
-				transitive = true
-			}
-
-			//face capture and liveliness
-			implementation project(path: ':acuanthgliveness')
-
-			//image processing (cropping, glare, sharpness)
-			implementation project(path: ':acuantimagepreparation')
-
-			//face capture
-			implementation project(path: ':acuantfacecapture')
-
-			//passive liveness
-			implementation project(path: ':acuantpassiveliveness')
+    	   implementation(group: 'com.na_at.sdk', name: 'fingerprints', version: '0.12.0_alpha_new', ext: 'aar'){
+                 transitive=true
+           }
   		}
 
 
