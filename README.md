@@ -64,7 +64,7 @@ El SDK incluye los siguientes modulos:
             transitive=true
          }
     }
-
+ Agregamos la dependencia en **build.gradle**:
 **Módulo Data :**
     dependencies {
          //Data
