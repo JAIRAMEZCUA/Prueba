@@ -64,7 +64,7 @@ El SDK incluye los siguientes modulos:
             transitive=true
          }
     }
- Agregamos la dependencia en **build.gradle**:
+
 **Módulo Data :**
     dependencies {
          //Data
@@ -74,97 +74,6 @@ El SDK incluye los siguientes modulos:
    }
 
 
-**Módulo Commons :**
-    dependencies {
-    //Commons
-    implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_alpha_new", ext: 'aar'){
-        transitive=true
-    }
-   }
-
-**Módulo Face :**
-    dependencies {
-    //Face
-    implementation(group: 'com.na_at.sdk', name: 'face', version: "0.12.0_alpha_new", ext: 'aar'){
-        transitive=true
-    }
-   }
-
-
-**Módulo ID :**
-    dependencies {
-        //identity
-        implementation(group: 'com.na_at.sdk', name: 'identity', version: "0.12.0_alpha_new", ext: 'aar'){
-        transitive=true
-        }
-     }
-
-
-**Módulo Enrolamiento :**
-    dependencies {
-     //enroll
-     implementation(group: 'com.na_at.sdk', name: 'enroll', version: '0.12.0_alpha_new', ext: 'aar'){
-         transitive = true
-        }
-     }
-**Módulo Face-Zoom :**
-    dependencies {
-        //zoom
-        implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
-        implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0_alpha_new", ext: 'aar'){
-          transitive = true
-        }
-     }
-
- **Módulo Resume :**
-      dependencies {
-          //resume
-          implementation(group: 'com.na_at.sdk', name: 'resume', version: "0.12.0_alpha_new", ext: 'aar'){
-              transitive=true
-          }
-       }
-**Módulo Sign :**
-    dependencies {
-     //sign
-     implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: '0.12.0_alpha_new', ext: 'aar'){
-         transitive = true
-         }
-     }
-**Módulo Appointments:**
-    dependencies {
-        //appointment
-        implementation(group: 'com.na_at.sdk', name: 'appointments', version: '0.12.0_alpha_new', ext: 'aar'){
-            transitive=true
-        }
-     }
- **Módulo Fingerprints:**
-     dependencies {
-            //finger
-            implementation(group: 'com.na_at.sdk', name: 'fingerprints', version: '0.12.0_alpha_new', ext: 'aar'){
-                transitive=true
-            }
-
-            // karalundi sdk **Se necesita hacer el POM**
-            //no es compatible con t-f
-            implementation(group: 'com.identy.core-native', name: 'core-native', version: '2.9.2.6', ext: 'aar')
-            api ('com.google.android.gms:play-services-safetynet:16.0.0')
-      }
-
-**Módulo Videoconference:**
-    dependencies {
-       // videoconference
-      implementation(group: 'com.na_at.sdk', name: 'videoconference', version: '0.12.0_alpha_new', ext: 'aar'){
-            transitive = true
-        }
-     }
-
-**Módulo Camara Widget :**
-    dependencies {
-        // camera widget
-        implementation(group: 'com.naat', name: 'camerawidget', version: '3.0.0', ext: 'aar'){
-            transitive=true
-        }
-     }
 
 
 **Note** Es necesario declarar  la parte de transitive = true , debido a que los artefactos contienen dependencias embebidas.
