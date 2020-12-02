@@ -80,16 +80,15 @@ El SDK incluye los siguientes modulos:
       }
 
 ### Setup para el módulo de Face ###
-  Agregamos la dependencia en **build.gradle**:
-        **Módulo Face :**
-        dependencies {
+Agregamos la dependencia en **build.gradle**:
+   **Módulo Face :**
+   dependencies {
             //Face
             implementation(group: 'com.na_at.sdk', name: 'face', version: "0.12.0_alpha_new", ext: 'aar'){
                 transitive=true
             }
-
-        }
-  Mostraremos el fragmento de configuración para el modo dinamico
+   }
+Mostraremos el fragmento de configuración para el modo dinamico
             int[] gestures = new int[]{
                     FaceConfig.GESTURE_TURN_RIGHT,
                     FaceConfig.GESTURE_TURN_LEFT,
