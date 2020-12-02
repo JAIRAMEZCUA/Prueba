@@ -75,12 +75,12 @@ El SDK incluye los siguientes modulos:
 
 
 **Módulo Commons :**
-    dependencies {
-    //Commons
-    implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_alpha_new", ext: 'aar'){
-        transitive=true
-    }
-   }
+  dependencies {
+        //Commons
+        implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_alpha_new", ext: 'aar'){
+            transitive=true
+        }
+  }
 
 **Módulo Face :**
     dependencies {
@@ -97,7 +97,7 @@ El SDK incluye los siguientes modulos:
         implementation(group: 'com.na_at.sdk', name: 'identity', version: "0.12.0_alpha_new", ext: 'aar'){
         transitive=true
         }
-     }
+    }
 
 
 **Módulo Enrolamiento :**
@@ -114,15 +114,15 @@ El SDK incluye los siguientes modulos:
         implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0_alpha_new", ext: 'aar'){
           transitive = true
         }
-     }
+    }
 
  **Módulo Resume :**
-      dependencies {
-          //resume
-          implementation(group: 'com.na_at.sdk', name: 'resume', version: "0.12.0_alpha_new", ext: 'aar'){
-              transitive=true
-          }
-       }
+ dependencies {
+     //resume
+     implementation(group: 'com.na_at.sdk', name: 'resume', version: "0.12.0_alpha_new", ext: 'aar'){
+        transitive=true
+     }
+ }
 **Módulo Sign :**
     dependencies {
      //sign
@@ -136,19 +136,19 @@ El SDK incluye los siguientes modulos:
         implementation(group: 'com.na_at.sdk', name: 'appointments', version: '0.12.0_alpha_new', ext: 'aar'){
             transitive=true
         }
-     }
+    }
  **Módulo Fingerprints:**
-     dependencies {
-            //finger
-            implementation(group: 'com.na_at.sdk', name: 'fingerprints', version: '0.12.0_alpha_new', ext: 'aar'){
-                transitive=true
-            }
+ dependencies {
+   //finger
+   implementation(group: 'com.na_at.sdk', name: 'fingerprints', version: '0.12.0_alpha_new', ext: 'aar'){
+         transitive=true
+   }
 
-            // karalundi sdk **Se necesita hacer el POM**
-            //no es compatible con t-f
-            implementation(group: 'com.identy.core-native', name: 'core-native', version: '2.9.2.6', ext: 'aar')
-            api ('com.google.android.gms:play-services-safetynet:16.0.0')
-      }
+   // karalundi sdk **Se necesita hacer el POM**
+   //no es compatible con t-f
+   implementation(group: 'com.identy.core-native', name: 'core-native', version: '2.9.2.6', ext: 'aar')
+   api ('com.google.android.gms:play-services-safetynet:16.0.0')
+ }
 
 **Módulo Videoconference:**
     dependencies {
@@ -156,7 +156,7 @@ El SDK incluye los siguientes modulos:
       implementation(group: 'com.na_at.sdk', name: 'videoconference', version: '0.12.0_alpha_new', ext: 'aar'){
             transitive = true
         }
-     }
+    }
 
 **Módulo Camara Widget :**
     dependencies {
