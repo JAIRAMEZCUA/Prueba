@@ -83,7 +83,6 @@ El SDK incluye los siguientes modulos:
 Agregamos la dependencia en **build.gradle**:
 
 
-           **Módulo Face :**
            dependencies {
                     //Face
                     implementation(group: 'com.na_at.sdk', name: 'face', version: "0.12.0_alpha_new", ext: 'aar'){
@@ -92,21 +91,24 @@ Agregamos la dependencia en **build.gradle**:
            }
 
 
-Mostraremos el fragmento de configuración para el modo dinamico
-                    int[] gestures = new int[]{
-                            FaceConfig.GESTURE_TURN_RIGHT,
-                            FaceConfig.GESTURE_TURN_LEFT,
-                            FaceConfig.GESTURE_BLINK,
-                            FaceConfig.GESTURE_SMILE,
-                    };
-                    FaceConfig faceConfig = FaceConfig.builder()
-                            .mode(FaceConfig.MODE_DYNAMIC)
-                            .availableGestures(gestures) //Pasamos el arreglo con los gestos.
-                            .onlyFrontCamera(true)//Camara frontal activada.
-                            .onlyRearCamera(false)//Camara Trasera de deshabilitada.
-                            .build();
+Mostraremos el fragmento de configuración para el modo dinamico:
 
-                    return faceConfig;
+    private FaceConfig faceConfig() {
+        int[] gestures = new int[]{
+                FaceConfig.GESTURE_TURN_RIGHT,
+                FaceConfig.GESTURE_TURN_LEFT,
+                FaceConfig.GESTURE_BLINK,
+                FaceConfig.GESTURE_SMILE,
+        };
+        FaceConfig faceConfig = FaceConfig.builder()
+                .mode(FaceConfig.MODE_DYNAMIC)
+                .availableGestures(gestures) //Pasamos el arreglo con los gestos.
+                .onlyFrontCamera(true)//Camara frontal activada.
+                .onlyRearCamera(false)//Camara Trasera de deshabilitada.
+                .build();
+
+        return faceConfig;
+    }
 
 
 ### Setup para el módulo de Face###
