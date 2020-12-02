@@ -59,10 +59,10 @@ El SDK incluye los siguientes modulos:
 
 **Módulo Manager :**
     dependencies {
-        - Manager
+        ** Manager**
         implementation(group: 'com.na_at.sdk', name: 'manager', version: "0.12.0_alpha_new", ext: 'aar'){
             transitive=true
-         }
+        }
     }
 
 **Módulo Data :**
