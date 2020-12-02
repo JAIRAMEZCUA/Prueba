@@ -65,14 +65,6 @@ El SDK incluye los siguientes modulos:
          }
     }
 
-**Módulo Data :**
-    dependencies {
-         //Data
-        implementation(group: 'com.na_at.sdk', name: 'data', version: "0.12.0_alpha_new", ext: 'aar'){
-            transitive=true
-        }
-   }
-
 
 
 
