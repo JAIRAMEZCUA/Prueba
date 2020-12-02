@@ -269,8 +269,6 @@ public class MainActivity extends AppCompatActivity  {
                 .build();
     }
     private FaceConfig faceConfig() {
-        Log.d("FACE", "SE EJECUTO FACE");
-
         int[] gestures = new int[]{
                 FaceConfig.GESTURE_TURN_RIGHT,
                 FaceConfig.GESTURE_TURN_LEFT,
@@ -279,9 +277,9 @@ public class MainActivity extends AppCompatActivity  {
         };
         FaceConfig faceConfig = FaceConfig.builder()
                 .mode(FaceConfig.MODE_DYNAMIC)
-                .availableGestures(gestures)
-                .onlyFrontCamera(true)
-                .onlyRearCamera(false)
+                .availableGestures(gestures) //Pasamos el arreglo con los gestos.
+                .onlyFrontCamera(true)//Camara frontal activada.
+                .onlyRearCamera(false)//Camara Trasera de deshabilitada.
                 .build();
 
         return faceConfig;

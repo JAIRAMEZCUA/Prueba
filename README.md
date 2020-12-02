@@ -54,40 +54,56 @@ El SDK incluye los siguientes modulos:
 
 
 ### Setup General ###
-**Nota:** Todos los modulos necesitan implementar los modulos de Commons, Manager y Data , por lo cual agregamos sus  dependencias en el **build.gradle**:
+**Nota:** Todos los modulos necesitan implementar los modulos de Commons,Data y Manager, por lo cual agregamos sus  dependencias en el **build.gradle**:
 
       ** Módulo Manager: **
-            dependencies {
-                //Manager
-                implementation(group: 'com.na_at.sdk', name: 'manager', version: "0.12.0_alpha_new", ext: 'aar'){
-                    transitive=true
+      dependencies {
+            //Manager
+            implementation(group: 'com.na_at.sdk', name: 'manager', version: "0.12.0_alpha_new", ext: 'aar'){
+                transitive=true
             }
       }
 
       **Módulo Data:**
-            dependencies {
-                 //Data
-                implementation(group: 'com.na_at.sdk', name: 'data', version: "0.12.0_alpha_new", ext: 'aar'){
+      dependencies {
+            //Data
+            implementation(group: 'com.na_at.sdk', name: 'data', version: "0.12.0_alpha_new", ext: 'aar'){
                     transitive=true
             }
       }
       **Módulo Commons:**
-             dependencies {
-                   //Commons
-                   implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_alpha_new", ext: 'aar'){
+      dependencies {
+             //Commons
+             implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_alpha_new", ext: 'aar'){
                        transitive=true
-                   }
+             }
       }
 
-### Setup para el módulo de Face###
- Agregamos la dependencia en **build.gradle**:
+### Setup para el módulo de Face ###
+  Agregamos la dependencia en **build.gradle**:
         **Módulo Face :**
-            dependencies {
+        dependencies {
             //Face
             implementation(group: 'com.na_at.sdk', name: 'face', version: "0.12.0_alpha_new", ext: 'aar'){
                 transitive=true
             }
-           }
+
+        }
+  Mostraremos el fragmento de configuración para el modo dinamico
+            int[] gestures = new int[]{
+                    FaceConfig.GESTURE_TURN_RIGHT,
+                    FaceConfig.GESTURE_TURN_LEFT,
+                    FaceConfig.GESTURE_BLINK,
+                    FaceConfig.GESTURE_SMILE,
+            };
+            FaceConfig faceConfig = FaceConfig.builder()
+                    .mode(FaceConfig.MODE_DYNAMIC)
+                    .availableGestures(gestures) //Pasamos el arreglo con los gestos.
+                    .onlyFrontCamera(true)//Camara frontal activada.
+                    .onlyRearCamera(false)//Camara Trasera de deshabilitada.
+                    .build();
+
+            return faceConfig;
 
 
 ### Setup para el módulo de Face###
