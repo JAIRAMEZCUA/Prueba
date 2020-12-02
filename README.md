@@ -54,8 +54,7 @@ El SDK incluye los siguientes modulos:
 
 
 ### Setup General ###
-**Nota:** Todos los modulos necesitan implementar las siguientes dependencias
- Agregamos la dependencia en **build.gradle**:
+**Nota:** Todos los modulos necesitan implementar los modulos de Commons,Data y Manager, por lo cual agregamos sus  dependencias en **build.gradle**:
 
       ** Módulo Manager: **
             dependencies {
@@ -72,13 +71,13 @@ El SDK incluye los siguientes modulos:
                     transitive=true
             }
       }
-     **Módulo Commons:**
+      **Módulo Commons:**
              dependencies {
                    //Commons
                    implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_alpha_new", ext: 'aar'){
                        transitive=true
                    }
-             }
+      }
 
 ### Setup para el módulo de Face###
  Agregamos la dependencia en **build.gradle**:
