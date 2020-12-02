@@ -54,8 +54,7 @@ El SDK incluye los siguientes modulos:
 
 
 ### Setup General ###
-**Nota:** Todos los modulos necesitan implementar los modulos de Commons, Manager y Data , por lo cual agregamos sus  dependencias
-    Agregamos la dependencia en **build.gradle**:
+**Nota:** Todos los modulos necesitan implementar los modulos de Commons, Manager y Data , por lo cual agregamos sus  dependencias en el **build.gradle**:
 
       ** Módulo Manager: **
             dependencies {
