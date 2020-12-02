@@ -53,7 +53,7 @@ El SDK incluye los siguientes modulos:
 
 
 
-### Setup General###
+### Setup General ###
 **Note:** Todos los modulos necesitan implementar las siguientes dependencias
  Agregamos la dependencia en **build.gradle**:
         **Módulo Manager :**
