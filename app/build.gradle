@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.myprueba"
+        applicationId "com.fad.bio.poc"
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
@@ -57,19 +57,39 @@ dependencies {
     implementation(group: 'com.naat', name: 'camerawidget', version: '3.0.0', ext: 'aar'){
         transitive=true
     }
+
+    //resume
+    implementation(group: 'com.na_at.sdk', name: 'resume', version: "0.12.0_alpha_new", ext: 'aar'){
+        transitive=true
+    }
+
     //zoom
     implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
-    compile(group: 'com.na_at.sdk', name: 'face-zoom', version: '0.11.10', ext: 'aar')
+    implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0_alpha_new", ext: 'aar')
 
 
+    // tensorflow
+    implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly') { changing = true }
+
+    //opencv
+    implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar'){
+        transitive=true
+    }
+
+    //ocr
+    implementation(group: 'com.naat', name: 'ocr.sdk', version: '1.0.11.6', ext: 'aar')
+
+
+
+    implementation 'com.google.android.gms:play-services-vision:16.2.0'
+
+    //zxing
+    implementation 'com.google.zxing:core:3.4.0'
+    implementation "com.google.firebase:firebase-core:16.0.7"
     //ml-vision
     api 'com.google.firebase:firebase-ml-vision:18.0.2'
     implementation 'com.google.firebase:firebase-ml-vision-face-model:17.0.2'
-    implementation(group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar')
-    //ocr engine
-    implementation(group: 'com.naat', name: 'ocr.sdk', version: '1.0.11.6', ext: 'aar')
-    // tensorflow
-    implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly') { changing = true }
+    api "com.google.android.gms:play-services-location:16.0.0"
 
 
     implementation 'androidx.appcompat:appcompat:1.2.0'

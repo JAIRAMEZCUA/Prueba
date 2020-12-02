@@ -22,6 +22,7 @@ import com.na_at.sdk.commons.config.FadConfig;
 import com.na_at.sdk.commons.config.FadCredentials;
 import com.na_at.sdk.commons.config.module.FaceConfig;
 import com.na_at.sdk.commons.config.module.IdentityConfig;
+import com.na_at.sdk.commons.config.module.ResumeConfig;
 import com.na_at.sdk.commons.util.FileManager;
 import com.na_at.sdk.commons.util.StringUtils;
 import com.na_at.sdk.identity.model.DefaultIdentityConfig;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R .layout.activity_main);
         mbtnFER = findViewById(R.id.FIR);
         mbtnZTS  = findViewById(R.id.ZTS);
         // build manager
@@ -55,21 +56,20 @@ public class MainActivity extends AppCompatActivity  {
                 .build();
 
         //credentials
-        credentials = FadCredentials.builder()
+         credentials = FadCredentials.builder()
                 .client("fad")
                 .secret("fadsecret")
                 .username("avillanueva@na-at.com.mx")
                 .password("c775e7b757ede630cd0aa1113bd102661ab38829ca52a6422ab782862f268646")
                 .build();
 
-
         mbtnFER.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FadConfig fadConfig = FadConfig.builder()
                         .credentials(credentials)
-                        .addConfig(faceConfig())
                         .addConfig(identityConfig())
+                        .addConfig(faceConfig())
                         .build();
                 FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
                         .config(fadConfig);
@@ -81,28 +81,18 @@ public class MainActivity extends AppCompatActivity  {
         });
 
 
-
         mbtnZTS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FadConfig.Builder builder = FadConfig.builder()
+                        .endpoint(StringUtils.encode("https://uat.firmaautografa.com"))
+                        .requestLocation(true)
+                        .preventScreenCapture(false)
+                        .credentials(credentials);
 
-                    FadCredentials credentials = FadCredentials.builder()
-                            .client("fad")
-                            .secret("fadsecret")
-                            .username("avillanueva@na-at.com.mx")
-                            .password("c775e7b757ede630cd0aa1113bd102661ab38829ca52a6422ab782862f268646")
-                            .build();
-
-
-                    FadConfig.Builder builder = FadConfig.builder()
-                            .endpoint(StringUtils.encode("https://uat.firmaautografa.com"))
-                            .requestLocation(true)
-                            .preventScreenCapture(false)
-                            .credentials(credentials);
-
-                builder.addConfig(getFaceZoomConfig());
                 builder.addConfig(DefaultIdentityConfig.build());
-
+                builder.addConfig(getFaceZoomConfig());
+                builder.addConfig(getResumeConfig());
 
                 ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_FRONT, INEProcessorTF.class);
                 ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_BACK, INEProcessorTF.class);
@@ -121,7 +111,12 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
-
+    private ResumeConfig getResumeConfig() {
+        return ResumeConfig.builder()
+                .showResult(true)
+               // .setFaceValueCompare(50)
+                .build();
+    }
     private FaceConfig faceConfig() {
         Log.d("FACE", "SE EJECUTO FACE");
 
@@ -149,33 +144,14 @@ public class MainActivity extends AppCompatActivity  {
         return FaceConfig.builder()
                 .setType(FaceConfig.ZOOM)
                 .addProperty(FaceConfig.ZOOM_API_KEY, "d5jKXRWPvpulWiBPEqGcnlDsx2ionDwn")
+                .setSimilarityPercent(50)
                 .build();
     }
 
     private IdentityConfig identityConfig(){
         Log.d("identity", "SE EJECUTO IDENTITY");
         IdentityConfig identityConfig = DefaultIdentityConfig.build();
-       return  identityConfig;
-/*
-        Option ineOption = Option.builder()
-                .setLabel("INE")
-                .withDocuments(1, new INE())
-//                .setLabel("Cédula Colombiana")
-//                .withDocuments(1, new CedulaColombiana())
-                .build();
-
-        IdentityConfig identityConfig = IdentityConfig.builder()
-             .setShowSecurityFeatures(true)
-             .setOcrApiKey("c0e69e96fdaa54852d464df79ab3e84dfa923a7570d25f59ecc1da2295cb20e5")
-             .setOcrModuleName("com.example.myprueba")
-                .withOption(ineOption)
-                .
-                .setOverwrite(true)
-
-             .build();
-        return identityConfig;
-
- */
+        return  identityConfig;
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
