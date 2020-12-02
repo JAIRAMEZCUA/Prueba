@@ -46,7 +46,9 @@ dependencies {
         transitive=true
     }
     //Face
-    implementation(group: 'com.na_at.sdk', name: 'face', version: '0.12.0_alpha_new', ext: 'pom')
+    implementation(group: 'com.na_at.sdk', name: 'face', version: "0.12.0_alpha_new", ext: 'aar'){
+        transitive=true
+    }
 
 
     //identity
@@ -64,8 +66,8 @@ dependencies {
     }
 
     //zoom
-    implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
-    implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0_alpha_new", ext: 'aar')
+   // implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
+    //implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0_alpha_new", ext: 'aar')
 
 
     // tensorflow
@@ -80,9 +82,47 @@ dependencies {
     implementation(group: 'com.naat', name: 'ocr.sdk', version: '1.0.11.5', ext: 'aar')
 
 
+    //enroll
+    implementation(group: 'com.na_at.sdk', name: 'enroll', version: '0.12.0_alpha_new', ext: 'aar'){
+        transitive = true
+    }
+
+    //sign
+    implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: '0.12.0_alpha_new', ext: 'aar'){
+        transitive = true
+    }
+
+
+    //appointment
+    implementation(group: 'com.na_at.sdk', name: 'appointments', version: '0.12.0_alpha_new', ext: 'aar'){
+        transitive=true
+    }
+
+    /*
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //finger
+    implementation(group: 'com.na_at.sdk', name: 'fingerprints', version: '0.12.0_alpha_new', ext: 'aar'){
+        transitive=true
+    }
+
+    // karalundi sdk
+    //no es compatible con t-f
+    implementation(group: 'com.identy.core-native', name: 'core-native', version: '2.9.2.6', ext: 'aar')
+    api ('com.google.android.gms:play-services-safetynet:16.0.0')
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+    implementation(group: 'com.na_at.sdk', name: 'videoconference', version: '0.12.0_alpha_new', ext: 'aar'){
+        transitive = true
+    }
+
+
+     */
+
+
 
     implementation 'com.google.android.gms:play-services-vision:16.2.0'
-
     //zxing
     implementation 'com.google.zxing:core:3.4.0'
     implementation "com.google.firebase:firebase-core:16.0.7"
@@ -90,7 +130,6 @@ dependencies {
     api 'com.google.firebase:firebase-ml-vision:18.0.2'
     implementation 'com.google.firebase:firebase-ml-vision-face-model:17.0.2'
     api "com.google.android.gms:play-services-location:16.0.0"
-
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'

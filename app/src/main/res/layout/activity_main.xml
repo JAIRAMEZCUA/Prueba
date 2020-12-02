@@ -13,6 +13,43 @@
         android:gravity="center"
         android:orientation="vertical">
         <Button
+            android:id="@+id/btnappoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Appoinments" />
+        <Button
+            android:id="@+id/btnaut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AUTH" />
+        <Button
+            android:id="@+id/btnEnroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enroll" />
+        <Button
+            android:id="@+id/btnSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign" />
+
+        <Button
+            android:id="@+id/btnFing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finger" />
+        <Button
+            android:id="@+id/btnVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Videoconference" />
+
+        <Button
+            android:id="@+id/btnOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Others docs" />
+        <Button
             android:id="@+id/ZTS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
