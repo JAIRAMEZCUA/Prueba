@@ -238,7 +238,9 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
 
       dependencies {
           //face-acuant
-          implementation(group: 'com.na_at.sdk', name: 'face-acuant', version: '0.12.0', ext: 'aar')
+          implementation(group: 'com.na_at.sdk', name: 'face-acuant', version: '0.12.0', ext: 'aar'){
+                transitive=true
+          }
       }
 
 Mostraremos el fragmento de código para el modulo de face-Acuant.
@@ -385,6 +387,71 @@ Mostraremos el fragmento de código para el modulo de Identity-Aqua
                 .setOcrProvider(IdentityConfig.OCR_PROVIDER_ACUANT)
                 .build();
     }
+
+
+### Setup para el módulo de Resume ###
+
+Agregamos la dependencia en **build.gradle**:
+    **Módulo Resume :**
+         dependencies {
+             //resume
+             implementation(group: 'com.na_at.sdk', name: 'resume', version:  $version, ext: 'aar'){
+                transitive=true
+             }
+         }
+
+
+Mostraremos el fragmento de código para el modulo de Resume.
+
+    private ResumeConfig getResumeConfig() {
+        return ResumeConfig.builder()
+                .showResult(true)
+               // .setFaceValueCompare(50)  --> El resume compara los rostros entre el modulo de identity y face tengan una semejanza 50%
+                .build();
+    }
+
+
+### Setup para el módulo de Resume ###
+
+**Nota : este módulo no es compatible con t-f.
+
+Agregamos la dependencia en **build.gradle**:
+
+   **Módulo Fingerprints:**
+
+     dependencies {
+           //finger
+           implementation(group: 'com.na_at.sdk', name: 'fingerprints', version:  $version , ext: 'aar'){
+                 transitive=true
+           }
+
+           // karalundi sdk **Se necesita hacer el POM**
+           implementation(group: 'com.identy.core-native', name: 'core-native', version: '2.9.2.6', ext: 'aar')
+           api ('com.google.android.gms:play-services-safetynet:16.0.0')
+     }
+
+
+Mostraremos el fragmento de código para el modulo de Fingerprints.
+
+   private FingerprintIDConfig getFingerprintIDConfig() {
+        FingerprintIDConfig.Builder builder = FingerprintIDConfig.builder()
+                .setTypeScanner(FingerprintIDConfig.SCANNER_TYPE_KARALUNDI)
+                .setMaxNfiqValid(5)
+                .setMaxCaptureAttempts(-1)
+                .setOptionOptic(false)
+                .setOptionCamera(false)
+                .setFingerOptions(new Finger[]{Finger.LEFT_INDEX, Finger.LEFT_MIDDLE, Finger.LEFT_RING, Finger.LEFT_LITTLE, Finger.RIGHT_INDEX, Finger.RIGHT_MIDDLE, Finger.RIGHT_RING, Finger.RIGHT_LITTLE})
+                //.setFingerOptions(new Finger[] {Finger.LEFT_INDEX})
+                .addProp("API_KEY", "AIzaSyAlG8ML3lOwPHiqIlte6SUnOuNGzfDFi5g")
+                .addProp("LICENSE", "com.fad.bio.poc2020-06-15 00 00 00.lic")
+                .setCloseOnError(false);
+
+
+        return builder.build();
+   }
+
+
+
 **Estamos implementando los demás modulos**
 
 
@@ -406,13 +473,7 @@ Mostraremos el fragmento de código para el modulo de Identity-Aqua
              }
 
 
-         **Módulo Resume :**
-         dependencies {
-             //resume
-             implementation(group: 'com.na_at.sdk', name: 'resume', version:  $version, ext: 'aar'){
-                transitive=true
-             }
-         }
+
         **Módulo Sign :**
             dependencies {
              //sign
@@ -427,18 +488,7 @@ Mostraremos el fragmento de código para el modulo de Identity-Aqua
                     transitive=true
                 }
             }
-         **Módulo Fingerprints:**
-         dependencies {
-           //finger
-           implementation(group: 'com.na_at.sdk', name: 'fingerprints', version:  $version , ext: 'aar'){
-                 transitive=true
-           }
 
-           // karalundi sdk **Se necesita hacer el POM**
-           //no es compatible con t-f
-           implementation(group: 'com.identy.core-native', name: 'core-native', version: '2.9.2.6', ext: 'aar')
-           api ('com.google.android.gms:play-services-safetynet:16.0.0')
-         }
 
         **Módulo Videoconference:**
             dependencies {
