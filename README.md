@@ -102,7 +102,7 @@ El SDK incluye los siguientes modulos:
       ** Módulo Manager: **
       dependencies {
             //Manager
-            implementation(group: 'com.na_at.sdk', name: 'manager', version: "0.12.0_alpha_new", ext: 'aar'){
+            implementation(group: 'com.na_at.sdk', name: 'manager', version: "0.12.0", ext: 'aar'){
                 transitive=true
             }
       }
@@ -110,14 +110,14 @@ El SDK incluye los siguientes modulos:
       **Módulo Data:**
       dependencies {
             //Data
-            implementation(group: 'com.na_at.sdk', name: 'data', version: "0.12.0_alpha_new", ext: 'aar'){
+            implementation(group: 'com.na_at.sdk', name: 'data', version: "0.12.0", ext: 'aar'){
                     transitive=true
             }
       }
       **Módulo Commons:**
       dependencies {
              //Commons
-             implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_alpha_new", ext: 'aar'){
+             implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0", ext: 'aar'){
                        transitive=true
              }
       }
@@ -128,7 +128,7 @@ Agregamos la dependencia en **build.gradle**:
 
            dependencies {
                     //Face
-                    implementation(group: 'com.na_at.sdk', name: 'face', version: "0.12.0_alpha_new", ext: 'aar'){
+                    implementation(group: 'com.na_at.sdk', name: 'face', version: "0.12.0", ext: 'aar'){
                         transitive=true
                     }
            }
@@ -188,7 +188,7 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
         **Módulo ID :**
             dependencies {
                 //identity
-                implementation(group: 'com.na_at.sdk', name: 'identity', version: "0.12.0_alpha_new", ext: 'aar'){
+                implementation(group: 'com.na_at.sdk', name: 'identity', version: "0.12.0", ext: 'aar'){
                 transitive=true
                 }
             }
@@ -197,7 +197,7 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
         **Módulo Enrolamiento :**
             dependencies {
              //enroll
-             implementation(group: 'com.na_at.sdk', name: 'enroll', version: '0.12.0_alpha_new', ext: 'aar'){
+             implementation(group: 'com.na_at.sdk', name: 'enroll', version: '0.12.0', ext: 'aar'){
                  transitive = true
                 }
              }
@@ -205,7 +205,7 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
             dependencies {
                 //zoom
                 implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
-                implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0_alpha_new", ext: 'aar'){
+                implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0", ext: 'aar'){
                   transitive = true
                 }
             }
@@ -213,28 +213,28 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
          **Módulo Resume :**
          dependencies {
              //resume
-             implementation(group: 'com.na_at.sdk', name: 'resume', version: "0.12.0_alpha_new", ext: 'aar'){
+             implementation(group: 'com.na_at.sdk', name: 'resume', version: "0.12.0", ext: 'aar'){
                 transitive=true
              }
          }
         **Módulo Sign :**
             dependencies {
              //sign
-             implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: '0.12.0_alpha_new', ext: 'aar'){
+             implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: '0.12.0', ext: 'aar'){
                  transitive = true
                  }
              }
         **Módulo Appointments:**
             dependencies {
                 //appointment
-                implementation(group: 'com.na_at.sdk', name: 'appointments', version: '0.12.0_alpha_new', ext: 'aar'){
+                implementation(group: 'com.na_at.sdk', name: 'appointments', version: '0.12.0', ext: 'aar'){
                     transitive=true
                 }
             }
          **Módulo Fingerprints:**
          dependencies {
            //finger
-           implementation(group: 'com.na_at.sdk', name: 'fingerprints', version: '0.12.0_alpha_new', ext: 'aar'){
+           implementation(group: 'com.na_at.sdk', name: 'fingerprints', version: '0.12.0', ext: 'aar'){
                  transitive=true
            }
 
@@ -247,7 +247,7 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
         **Módulo Videoconference:**
             dependencies {
                // videoconference
-              implementation(group: 'com.na_at.sdk', name: 'videoconference', version: '0.12.0_alpha_new', ext: 'aar'){
+              implementation(group: 'com.na_at.sdk', name: 'videoconference', version: '0.12.0', ext: 'aar'){
                     transitive = true
                 }
             }
