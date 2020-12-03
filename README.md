@@ -555,7 +555,7 @@ Mostraremos el fragmento de código para el modulo de Videoconference.
 
 ### Setup para el módulo de Document ###
 
-**Requisitos , necesitamos tener implementado el modulo de CameraWidget y la implementación OCR.
+**Requisitos , necesitamos tener implementado el modulo de CameraWidget.
 Agregamos la dependencia en **build.gradle**:
 
    **Módulo Document:**
@@ -566,7 +566,7 @@ Agregamos la dependencia en **build.gradle**:
                      transitive = true
                  }
 
-                 implementation(group: 'com.naat', name: 'camerawidget', version: "3.0.0_alpha", ext: 'aar')
+                 implementation(group: 'com.naat', name: 'camerawidget', version: "3.0.0", ext: 'aar')
 
           }
 
@@ -592,13 +592,9 @@ Mostraremos el fragmento de código para el modulo de Document.
 
 
 
+### Setup para el módulo de Appointments ###
 
-
-
-
-
-
-**Estamos implementando los demás modulos**
+Agregamos la dependencia en **build.gradle**:
 
         **Módulo Appointments:**
             dependencies {
@@ -606,18 +602,22 @@ Mostraremos el fragmento de código para el modulo de Document.
                 implementation(group: 'com.na_at.sdk', name: 'appointments', version:  $version , ext: 'aar'){
                     transitive=true
                 }
+
+                 //Calendar
+                 implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
             }
 
 
+Mostraremos el fragmento de código para el modulo de Appointment.
 
-
-        **Módulo Camara Widget :**
-            dependencies {
-                // camera widget
-                implementation(group: 'com.naat', name: 'camerawidget', version: '3.0.0', ext: 'aar'){
-                    transitive=true
-                }
-             }
+    private AppointmentConfig getAppointmentConfig() {
+        return AppointmentConfig
+                .builder()
+                .contactEmail(EMAIL)
+                .contactFullName(FULL_NAME)
+                .contactNumber(NUMBER)
+                .build();
+    }
 
 
 **Note** Es necesario declarar  la parte de transitive = true , debido a que los artefactos contienen dependencias embebidas.
