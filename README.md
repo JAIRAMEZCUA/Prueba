@@ -54,8 +54,9 @@ El SDK incluye los siguientes modulos:
 
 
 ### Setup General ###
-**Colocamos los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK **
-allprojects {
+**Colocamos los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK**
+
+ allprojects {
 
     repositories {
         google()
