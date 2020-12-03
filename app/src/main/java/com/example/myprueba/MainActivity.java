@@ -176,8 +176,8 @@ public class MainActivity extends AppCompatActivity  {
             public void onClick(View v) {
                 FadConfig fadConfig = FadConfig.builder()
                         .credentials(credentials)
-                        .addConfig(identityConfig())
-                        .addConfig(faceConfig())
+                        //.addConfig(identityConfig())
+                        .addConfig(faceConfig2())
                         .addConfig(getResumeConfig())
                         .build();
                 FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
@@ -283,6 +283,15 @@ public class MainActivity extends AppCompatActivity  {
                 .build();
 
         return faceConfig;
+    }
+
+    private FaceConfig faceConfig2() {
+        return FaceConfig.builder()
+                .mode(FaceConfig.MODE_TIME)
+                .captureTime(4) //segundos
+                .onlyFrontCamera(true)
+                .onlyRearCamera(false)
+                .build();
     }
 
     private OtherDocsConfig getOtherDocConfig() {

@@ -54,6 +54,55 @@ El SDK incluye los siguientes modulos:
 
 
 ### Setup General ###
+**Colocamos los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK **
+allprojects {
+
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url "https://s3.amazonaws.com/repo.commonsware.com"
+        }
+        maven {
+            credentials {
+                username "$fadUser"
+                password "$fadPassword"
+            }
+            url 'https://repository.firmaautografa.com/artifactory/libs-release-local'
+        }
+
+        maven { url "https://jitpack.io" }
+
+        maven {
+            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+        }
+        maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
+
+        maven {
+            url "https://identy.jfrog.io/identy/gradle-release-local"
+            credentials {
+                username = "naat"
+                password = "#R3lR0gugPGDcrII3G37C"
+            }
+        }
+
+        maven {
+            url "s3://maven.readid.com"
+            credentials(AwsCredentials) {
+                accessKey "AKIARPBHJEUUXQPJCDOY"
+                secretKey "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"
+            }
+        }
+
+        //Face Capture and Barcode reading. Only add if using acuantcamera or acuanthgliveness
+        maven { url 'https://maven.google.com' }
+        maven { url 'https://dl.bintray.com/acuant/Acuant' }
+        maven { url 'https://raw.githubusercontent.com/iProov/android/master/maven/' }
+    }
+    apply plugin: "com.jfrog.artifactory"
+    apply plugin: 'maven-publish'
+}
+
 **Nota:** Todos los modulos necesitan implementar los modulos de Commons,Data y Manager, por lo cual agregamos sus  dependencias en el **build.gradle**:
 
       ** Módulo Manager: **

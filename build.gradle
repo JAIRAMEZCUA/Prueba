@@ -35,41 +35,18 @@ allprojects {
             }
             url 'https://repository.firmaautografa.com/artifactory/libs-release-local'
         }
-//        maven {
-//            credentials {
-//                username "$fadUser"
-//                password "$fadPassword"
-//            }
-//            url 'https://repository.firmaautografa.com/artifactory/libs-release-experimental'
-//        }
         maven { url "https://jitpack.io" }
-//        maven {
-//            url 'https://repository.firmaautografa.com/artifactory/libs-snapshot-local'
-//        }
+
         maven {
             url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
         }
         maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
 
-        maven {
-            url "https://identy.jfrog.io/identy/gradle-release-local"
-            credentials {
-                username = "naat"
-                password = "#R3lR0gugPGDcrII3G37C"
-            }
-        }
     }
     apply plugin: "com.jfrog.artifactory"
     apply plugin: 'maven-publish'
 }
 
-ext {
-    compileSdkVersion = 28
-    //android support
-    buildToolsVersion = "28.0.3"
-    androidVersion = "28.0.0"
-    constraintLayout = "1.1.3"
-}
 
 
 task clean(type: Delete) {
