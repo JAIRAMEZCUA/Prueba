@@ -130,6 +130,15 @@ El SDK incluye los siguientes modulos:
              }
       }
 
+## Credenciales para el uso de los módulos ##
+**Necesitamos agregar las credenciales para hacer uso de los módulos del SDK , por lo cual agregamos las credenciales para posterior asignarlas a la configuración**
+        FadCredentials credentials = FadCredentials.builder()
+                .client("fad")
+                .secret("fadsecret")
+                .username(BuildConfig.USERNAME)
+                .password(BuildConfig.PASSWORD)
+                .build();
+
 ### Setup para el módulo de Face ###
 Agregamos la dependencia en **build.gradle**:
 
@@ -239,6 +248,37 @@ Mostraremos el fragmento de código para el modulo de face-Acuant.
                 providerConfiguration.setAcOzoneEndpoint($OzoneEndpoint);
 
         return providerConfiguration;
+    }
+
+Agregamos la dependencia en **build.gradle**:
+
+              dependencies {
+                   //face-acuant
+                    implementation(group: 'com.na_at.sdk', name: 'face-acuant', version: '0.12.0', ext: 'aar')
+              }
+Mostraremos el fragmento de código para el modulo de face-Acuant.
+
+ private void testIdentity() {
+
+
+        FadConfig.Builder builder = FadConfig.builder()
+                .endpoint(StringUtils.encode(BuildConfig.ENDPOINT))
+                .requestLocation(false) //deshabilitamos el GPS
+                .preventScreenCapture(false) //Permitimos capturas de pantalla
+                .credentials(credentials); //asignamos las credenciales proporcionamos por NAAT
+
+        // default identity config
+        builder.addConfig(DefaultIdentityConfig.build());
+
+        ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_FRONT, INEProcessor.class);
+        ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_BACK, INEProcessor.class);
+
+        FadManager.IntentBuilder intentBuilder = fadManager.newIntentBuilder()
+                .showHeader(true)
+                .showSubHeader(false)
+                .config(builder.build());
+
+        startActivityForResult(intentBuilder.build(this), FAD_SDK_REQUEST);
     }
 
 **Estamos implementando los demás modulos**
