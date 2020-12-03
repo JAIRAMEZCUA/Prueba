@@ -600,6 +600,7 @@ Mostraremos el fragmento de código para el modulo de Document.
 Agregamos la dependencia en **build.gradle**:
 
         **Módulo Appointments:**
+        
             dependencies {
                 //appointment
                 implementation(group: 'com.na_at.sdk', name: 'appointments', version:  $version , ext: 'aar'){
@@ -608,6 +609,11 @@ Agregamos la dependencia en **build.gradle**:
 
                  //Calendar
                  implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
+                 
+                 // (other dependencies)
+                 implementation("org.jitsi.react:jitsi-meet-sdk:${rootProject.ext.jitsi}") { 
+                        transitive = true
+                 }
             }
 
 
