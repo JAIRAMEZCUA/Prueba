@@ -81,10 +81,18 @@ El SDK incluye los siguientes modulos:
 
             maven {
                 url "https://identy.jfrog.io/identy/gradle-release-local"
+               credentials {
+                         username "$fadUser"
+                          password "$fadPassword"
+               }
             }
 
             maven {
                 url "s3://maven.readid.com"
+                  credentials {
+                             username "$fadUser"
+                             password "$fadPassword"
+                    }
             }
 
             //Face Capture and Barcode reading. Only add if using acuantcamera or acuanthgliveness
