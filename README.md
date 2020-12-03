@@ -192,6 +192,59 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
                //.setSimilarityPercent(50) //Se compara con el modulo de identity previamente ejecutado para comparar rostros.
                 .build();
     }
+### Setup para el módulo de Face-Acuant ###
+**Nota para ocupar este modulo se necesita tener implementado la dependencia de Face.**
+ Agregamos la dependencia en **build.gradle**:
+
+             dependencies {
+                  //face-acuant
+                   implementation(group: 'com.na_at.sdk', name: 'face-acuant', version: '0.12.0', ext: 'aar')
+             }
+Mostraremos el fragmento de código para el modulo de face-Acuant.
+
+    private void testAcuantFace() {
+
+        FadConfig.Builder builder = FadConfig.builder()
+                .endpoint(StringUtils.encode("https://uat.firmaautografa.com"))
+                .requestLocation(false)
+                .preventScreenCapture(false)
+                .credentials(credentials);
+
+        // ACUANT config
+        builder.addConfig(FaceConfig.builder()
+                .setType(FaceConfig.ACUANT)
+                .setProviderConfiguration(getProvideConfiguration())
+                .build());
+
+        FadManager.IntentBuilder intentBuilder = mFadManager.newIntentBuilder()
+                .showHeader(true)
+                .showSubHeader(false)
+                .config(builder.build());
+
+        startActivityForResult(intentBuilder.build(this), FAD_SDK_REQUEST_CODE);
+    }
+
+    private ProviderConfiguration getProvideConfiguration() {
+        ProviderConfiguration providerConfiguration = new ProviderConfiguration();
+        //Aquant
+        providerConfiguration.setAcUserName("Acuant_Admin@BdC.com");
+        providerConfiguration.setAcPassword("J6Jqt2XbQ6^)GefD");
+        providerConfiguration.setAcSubscriptionId("ce8066aa-1196-4071-a4c3-ededff1c3f17");
+        providerConfiguration.setAcFrmEndpoint("https://frm.acuant.net");
+        providerConfiguration.setAcAssureIdEndpoint("https://services.assureid.net");
+        providerConfiguration.setAcMediscanEndpoint("https://medicscan.acuant.net");
+        providerConfiguration.setAcPassiveLivenessEndpoint("https://us.passlive.acuant.net");
+        providerConfiguration.setAcAcasEndpoint("https://acas.acuant.net");
+        providerConfiguration.setAcOzoneEndpoint("https://ozone.acuant.net");
+        //ReadId
+        providerConfiguration.setRiBaseUrl("https://saas-preprod.readid.com:443/odata/v1/ODataServlet/");
+        providerConfiguration.setRiAccessKey("096ecf43-3424-4dd1-91f7-419cdb34ebe1");
+
+        return providerConfiguration;
+    }
+
+**Estamos implementando los demás modulos**
+
 
         **Módulo ID :**
             dependencies {
