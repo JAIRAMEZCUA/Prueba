@@ -366,26 +366,26 @@ Agregamos la dependencia en **build.gradle**:
 Mostraremos el fragmento de código para el modulo de Identity-Aqua
 
     private IdentityConfig getAcuantIdentityConfig() {
-        Option dynamicOption = Option.builder()
-                .setLabel("Dynamic")
-                .withDocuments(1, new GenericId(getProvideConfiguration()))
-                .build();
+            Option dynamicOption = Option.builder()
+                    .setLabel("Dynamic")
+                    .withDocuments(1, new GenericId(getProvideConfiguration()))
+                    .build();
 
-        // default identity condition
-        Condition mainCondition = Condition.builder()
-                .setStatement("¿Con cuál documento <b>se identifica el cliente</b>?")
-                .setIcon(com.na_at.sdk.commons.R.drawable.ic_ine_condition)
-                .withOption(dynamicOption)
-                .build();
+            // default identity condition
+            Condition mainCondition = Condition.builder()
+                    .setStatement("¿Con cuál documento <b>se identifica el cliente</b>?")
+                    .setIcon(com.na_at.sdk.commons.R.drawable.ic_ine_condition)
+                    .withOption(dynamicOption)
+                    .build();
 
-        return IdentityConfig.builder()
-                .setMainCondition(mainCondition)
-                .setShowIsValidity(false)
-                .setShowSecurityFeatures(false)
-                .setValidityINE(false)
-                .setShowDialogConfirm(false)
-                .setOcrProvider(IdentityConfig.OCR_PROVIDER_ACUANT)
-                .build();
+            return IdentityConfig.builder()
+                    .setMainCondition(mainCondition)
+                    .setShowIsValidity(false)
+                    .setShowSecurityFeatures(false)
+                    .setValidityINE(false)
+                    .setShowDialogConfirm(false)
+                    .setOcrProvider(IdentityConfig.OCR_PROVIDER_ACUANT)
+                    .build();
     }
 
 
@@ -478,17 +478,18 @@ Mostraremos el fragmento de código para el modulo de Enrolamiento.
 
     }
 
-### Setup para el módulo de Enrolamiento ###
+### Setup para el módulo de Videoconference ###
 
 Agregamos la dependencia en **build.gradle**:
 
    **Módulo Videoconference:**
-      dependencies {
-             // videoconference
-             implementation(group: 'com.na_at.sdk', name: 'videoconference', version: '0.12.0', ext: 'aar'){
-                 transitive = true
-             }
-      }
+
+          dependencies {
+                 // videoconference
+                 implementation(group: 'com.na_at.sdk', name: 'videoconference', version: '0.12.0', ext: 'aar'){
+                     transitive = true
+                 }
+          }
 
 
 Mostraremos el fragmento de código para el modulo de Videoconference.
