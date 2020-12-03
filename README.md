@@ -575,7 +575,7 @@ Mostraremos el fragmento de código para el modulo de Videoconference.
 
 ### Setup para el módulo de Document ###
 
-**Requisitos , necesitamos tener implementado el modulo de CameraWidget.**
+**Requisitos , necesitamos tener implementado el modulo de CameraWidget y OpenCv.**
 
 Agregamos la dependencia en **build.gradle**:
 
@@ -588,6 +588,7 @@ Agregamos la dependencia en **build.gradle**:
                  }
 
                  implementation(group: 'com.naat', name: 'camerawidget', version: "3.0.0", ext: 'aar')
+                 implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar')
 
           }
 
