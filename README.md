@@ -267,7 +267,7 @@ Construimos el objeto de Face-Acuant, asignando las credenciales y su configurac
         startActivityForResult(intentBuilder.build(this), FAD_SDK_REQUEST_CODE);
     }
 
-Asignamos la configuració para uso del módulo de face-acuant
+Asignamos la configuración para uso del módulo de face-acuant
 
     private ProviderConfiguration getProvideConfiguration() {
             ProviderConfiguration providerConfiguration = new ProviderConfiguration();
@@ -314,37 +314,37 @@ Mostraremos el fragmento de código para el modulo de identity
 
 Agregamos la dependencia en **build.gradle**:
 
-   dependencies {
-     //face-acuant
-     implementation(group: 'com.na_at.sdk', name: 'face-acuant', version:  $version, ext: 'aar')
-   }
+       dependencies {
+             //face-acuant
+             implementation(group: 'com.na_at.sdk', name: 'face-acuant', version:  $version, ext: 'aar')
+       }
 
 
 Mostraremos el fragmento de código para el modulo de Identity-tensor flow.
 
 
- private void testIdentity() {
+     private void testIdentity() {
 
-        FadConfig.Builder builder = FadConfig.builder()
-                .endpoint(StringUtils.encode(BuildConfig.ENDPOINT))
-                .requestLocation(false) //deshabilitamos el GPS
-                .preventScreenCapture(false) //Permitimos capturas de pantalla
-                .credentials(credentials); //asignamos las credenciales proporcionamos por NAAT
+            FadConfig.Builder builder = FadConfig.builder()
+                    .endpoint(StringUtils.encode(BuildConfig.ENDPOINT))
+                    .requestLocation(false) //deshabilitamos el GPS
+                    .preventScreenCapture(false) //Permitimos capturas de pantalla
+                    .credentials(credentials); //asignamos las credenciales proporcionamos por NAAT
 
-        // default identity config
-        builder.addConfig(DefaultIdentityConfig.build());
+            // default identity config
+            builder.addConfig(DefaultIdentityConfig.build());
 
-        //con las siguientes lineas indicamos que el reconocimiento de la INE será por medio de tensor-flow
-        ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_FRONT, INEProcessorTF.class);
-        ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_BACK, INEProcessorTF.class);
+            //con las siguientes lineas indicamos que el reconocimiento de la INE será por medio de tensor-flow
+            ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_FRONT, INEProcessorTF.class);
+            ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_BACK, INEProcessorTF.class);
 
-        FadManager.IntentBuilder intentBuilder = fadManager.newIntentBuilder()
-                .showHeader(true)
-                .showSubHeader(false)
-                .config(builder.build());
+            FadManager.IntentBuilder intentBuilder = fadManager.newIntentBuilder()
+                    .showHeader(true)
+                    .showSubHeader(false)
+                    .config(builder.build());
 
-        startActivityForResult(intentBuilder.build(this), FAD_SDK_REQUEST);
- }
+            startActivityForResult(intentBuilder.build(this), FAD_SDK_REQUEST);
+     }
 
 **Estamos implementando los demás modulos**
 
