@@ -477,21 +477,43 @@ Mostraremos el fragmento de código para el modulo de Enrolamiento.
                 .build();
 
     }
+
+### Setup para el módulo de Enrolamiento ###
+
+Agregamos la dependencia en **build.gradle**:
+
+   **Módulo Videoconference:**
+      dependencies {
+             // videoconference
+             implementation(group: 'com.na_at.sdk', name: 'videoconference', version: '0.12.0', ext: 'aar'){
+                 transitive = true
+             }
+      }
+
+
+Mostraremos el fragmento de código para el modulo de Videoconference.
+
+    private VideoConferenceConfig getVideoConferenceConfig() {
+        return VideoConferenceConfig.builder()
+                .contactFullName(USERNAME)
+                .setName(NAME)
+                .setLastName(LASTNAME)
+                .setSecondName(SECONDNAME)
+                .contactNumber(NUMBER)
+                .contactEmail(EMAIL)
+                .setVideoconferenceId("")
+                .setScriptId("4504")
+                .build();
+    }
+
+
+
+
+
+
+
+
 **Estamos implementando los demás modulos**
-
-
-        **Módulo ID :**
-            dependencies {
-                //identity
-                implementation(group: 'com.na_at.sdk', name: 'identity', version:  $version ,  ext: 'aar'){
-                transitive=true
-                }
-            }
-
-
-
-
-
 
         **Módulo Sign :**
             dependencies {
@@ -509,13 +531,7 @@ Mostraremos el fragmento de código para el modulo de Enrolamiento.
             }
 
 
-        **Módulo Videoconference:**
-            dependencies {
-               // videoconference
-              implementation(group: 'com.na_at.sdk', name: 'videoconference', version: '0.12.0', ext: 'aar'){
-                    transitive = true
-                }
-            }
+
 
         **Módulo Camara Widget :**
             dependencies {
