@@ -181,7 +181,7 @@ Mostraremos el fragmento de configuración para el modo de tiempo:
              dependencies {
                   //zoom
                   implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
-                  implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0_alpha_new", ext: 'aar')
+                  implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0", ext: 'aar')
              }
 Mostraremos el fragmento de código para el modulo de face-zoom.
 
