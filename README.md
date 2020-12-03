@@ -315,8 +315,10 @@ Mostraremos el fragmento de código para el modulo de identity
 Agregamos la dependencia en **build.gradle**:
 
        dependencies {
-             //face-acuant
-             implementation(group: 'com.na_at.sdk', name: 'face-acuant', version:  $version, ext: 'aar')
+            //identity-tf
+            implementation(group: 'com.na_at.sdk', name: 'identity-tf', version: $version,  ext: 'aar'){
+                transitive(true)
+            }
        }
 
 
@@ -346,6 +348,43 @@ Mostraremos el fragmento de código para el modulo de Identity-tensor flow.
             startActivityForResult(intentBuilder.build(this), FAD_SDK_REQUEST);
      }
 
+
+### Setup para el módulo de Identity-Acuant ###
+
+Agregamos la dependencia en **build.gradle**:
+
+       dependencies {
+             //identity-acuant
+             implementation(group: 'com.na_at.sdk', name: 'identity-acuant', version: $version , ext: 'aar'){
+                transitive=true
+             }
+       }
+
+
+Mostraremos el fragmento de código para el modulo de Identity-Aqua
+
+    private IdentityConfig getAcuantIdentityConfig() {
+        Option dynamicOption = Option.builder()
+                .setLabel("Dynamic")
+                .withDocuments(1, new GenericId(getProvideConfiguration()))
+                .build();
+
+        // default identity condition
+        Condition mainCondition = Condition.builder()
+                .setStatement("¿Con cuál documento <b>se identifica el cliente</b>?")
+                .setIcon(com.na_at.sdk.commons.R.drawable.ic_ine_condition)
+                .withOption(dynamicOption)
+                .build();
+
+        return IdentityConfig.builder()
+                .setMainCondition(mainCondition)
+                .setShowIsValidity(false)
+                .setShowSecurityFeatures(false)
+                .setValidityINE(false)
+                .setShowDialogConfirm(false)
+                .setOcrProvider(IdentityConfig.OCR_PROVIDER_ACUANT)
+                .build();
+    }
 **Estamos implementando los demás modulos**
 
 
