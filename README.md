@@ -480,15 +480,15 @@ Mostraremos el fragmento de código para el modulo de Enrolamiento.
 
 ### Setup para el módulo de Firma  ###
 
-**Nota Para el módulo firma es obligatorio tener el xml y el pdf como entradas: las fuentes de entrada pueden ser un AsseetSource, FileSource y URLSource: **
-    
+**Nota Para el módulo firma es obligatorio tener el xml y el pdf como entradas: las fuentes de entrada pueden ser un AsseetSource, FileSource y URLSource:**
+
     SignConfig.FadSource xmlSource = new AssetSource(binding.textXmlAssetName.getText().toString());
     SignConfig.FadSource pdfSource = new AssetSource(binding.textPdfAssetName.getText().toString());
 
     new FileSource(“url de archivo”);
     new UriSource(“uri del archivo”);
 
-**Para hacer uso de  este módulo necesita estar registrado en el Backend de FAD **
+**Para hacer uso de  este módulo necesita estar registrado en el Backend de FAD**
 
 
 Agregamos la dependencia en **build.gradle**:
@@ -557,7 +557,8 @@ Mostraremos el fragmento de código para el modulo de Videoconference.
 
 ### Setup para el módulo de Document ###
 
-**Requisitos , necesitamos tener implementado el modulo de CameraWidget.
+**Requisitos , necesitamos tener implementado el modulo de CameraWidget.**
+
 Agregamos la dependencia en **build.gradle**:
 
    **Módulo Document:**
