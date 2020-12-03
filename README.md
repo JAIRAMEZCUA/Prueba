@@ -54,7 +54,7 @@ El SDK incluye los siguientes modulos:
 
 
 ### Setup General ###
-**Colocamos los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK**
+**Colocamos los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK.**
 
 
      allprojects {
@@ -71,14 +71,14 @@ El SDK incluye los siguientes modulos:
                 }
                 url 'https://repository.firmaautografa.com/artifactory/libs-release-local'
             }
-    
+
             maven { url "https://jitpack.io" }
-    
+
             maven {
                 url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
             }
             maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
-    
+
             maven {
                 url "https://identy.jfrog.io/identy/gradle-release-local"
                 credentials {
@@ -86,7 +86,7 @@ El SDK incluye los siguientes modulos:
                     password = "#R3lR0gugPGDcrII3G37C"
                 }
             }
-    
+
             maven {
                 url "s3://maven.readid.com"
                 credentials(AwsCredentials) {
@@ -94,7 +94,7 @@ El SDK incluye los siguientes modulos:
                     secretKey "Fdaxm184zxhltpdywPi1NCKHCC31cxpPNHyatb64"
                 }
             }
-    
+
             //Face Capture and Barcode reading. Only add if using acuantcamera or acuanthgliveness
             maven { url 'https://maven.google.com' }
             maven { url 'https://dl.bintray.com/acuant/Acuant' }
@@ -105,7 +105,7 @@ El SDK incluye los siguientes modulos:
      }
 
 
-**Nota:** Todos los modulos necesitan implementar los modulos de Commons,Data y Manager, por lo cual agregamos sus  dependencias en el **build.gradle**:
+**Nota:** Todos los modulos necesitan implementar los modulos de **Commons,Data y Manager**, por lo cual agregamos sus  dependencias en el **build.gradle**:
 
       ** Módulo Manager: **
       dependencies {
@@ -161,24 +161,20 @@ Mostraremos el fragmento de configuración para el modo dinamico:
         return faceConfig;
     }
 
+Mostraremos el fragmento de configuración para el modo de tiempo:
 
+    private FaceConfig faceConfig() {
+        return FaceConfig.builder()
+                .mode(FaceConfig.MODE_TIME) //configurando el modulo de face en modo de tiempo
+                .captureTime(5) //el tiempo de captura de rostro es de 5 segundos
+                .onlyFrontCamera(true)//camara frontal activada
+                .onlyRearCamera(false)
+                .build();
+    }
+    
+    
 ### Setup para el módulo de Face###
  Agregamos la dependencia en **build.gradle**:
-
-
-
-
-
-        **Módulo Commons :**
-          dependencies {
-                //Commons
-                implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_alpha_new", ext: 'aar'){
-                    transitive=true
-                }
-          }
-
-
-
         **Módulo ID :**
             dependencies {
                 //identity
