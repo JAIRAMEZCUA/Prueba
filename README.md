@@ -138,6 +138,7 @@ El SDK incluye los siguientes modulos:
       }
 
 ## Credenciales para el uso de los módulos ##
+
 **Existen dos maneras de auntentificación para hacer uso de los módulos del SDK son :**
 
 **1.    Usando client, secret, username y password**
@@ -170,6 +171,7 @@ La segunda autenticación es por medio de Token, la aplicación host es la que s
                .build();
 
 ### Setup para el módulo de Face ###
+
 Agregamos la dependencia en **build.gradle**:
 
 
@@ -232,6 +234,7 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
                 .build();
     }
 ### Setup para el módulo de Face-Acuant ###
+
 **Nota para ocupar este modulo se necesita tener implementado la dependencia de Face.**
 
  Agregamos la dependencia en **build.gradle**:
@@ -289,7 +292,7 @@ Asignamos la configuración para uso del módulo de face-acuant
 
 ### Setup para el módulo de Identity ###
 
-**Nota : ocupamos las dependencias de ocr y openCV **
+**Nota : ocupamos las dependencias de OCR y openCV.**
 
 Agregamos la dependencia en **build.gradle**:
 
@@ -323,7 +326,7 @@ Mostraremos el fragmento de código para el modulo de identity
 2.  Necesita estar registrada la App en nuestro Backend para que pueda hacer uso de este modulo.
 3.  Para el módulo identity-tf es obligatorio tener el xml y el txt como entradas: las fuentes de entrada pueden ser un AsseetSource, FileSource y URLSource.
 
-**Nota : Implementamos el modulo de camera Widget **
+**Nota : Implementamos el modulo de camera Widget**
 
 Agregamos la dependencia en **build.gradle**:
 
@@ -506,16 +509,16 @@ Mostraremos el fragmento de código para el modulo de Enrolamiento.
     new FileSource(“url de archivo”);
     new UriSource(“uri del archivo”);
 
-**Para hacer uso de  este módulo necesita estar registrado en el Backend de FAD **
+**Para hacer uso de  este módulo necesita estar registrado en el Backend de FAD**
 
 Necesitamos implementar la implementación de la libreria OPENCV.
 
 Agregamos la dependencia en **build.gradle**:
 
    **Módulo Firma:**
-   
+
     dependencies {
-        
+
             //sign
             implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: $version, ext: 'aar'){
                 transitive = true
@@ -557,7 +560,7 @@ Agregamos la dependencia en **build.gradle**:
 
           dependencies {
                  // videoconference
-                 implementation(group: 'com.na_at.sdk', name: 'videoconference', version: '0.12.0', ext: 'aar'){
+                 implementation(group: 'com.na_at.sdk', name: 'videoconference', version: $version, ext: 'aar'){
                      transitive = true
                  }
           }
