@@ -289,6 +289,8 @@ Asignamos la configuración para uso del módulo de face-acuant
 
 ### Setup para el módulo de Identity ###
 
+**Nota : ocupamos las dependencias de ocr y openCV **
+
 Agregamos la dependencia en **build.gradle**:
 
      dependencies {
@@ -296,6 +298,13 @@ Agregamos la dependencia en **build.gradle**:
          implementation(group: 'com.na_at.sdk', name: 'identity', version:  $version, ext: 'aar'){
              transitive=true
          }
+         
+        //ocr
+       implementation(group: 'com.naat', name: 'ocr.sdk', version: $ocr_version, ext: 'aar')
+       
+        //opencv
+        implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar')
+
      }
 
 
@@ -600,7 +609,7 @@ Mostraremos el fragmento de código para el modulo de Document.
 Agregamos la dependencia en **build.gradle**:
 
         **Módulo Appointments:**
-        
+
             dependencies {
                 //appointment
                 implementation(group: 'com.na_at.sdk', name: 'appointments', version:  $version , ext: 'aar'){
@@ -609,9 +618,9 @@ Agregamos la dependencia en **build.gradle**:
 
                  //Calendar
                  implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
-                 
+
                  // (other dependencies)
-                 implementation("org.jitsi.react:jitsi-meet-sdk:${rootProject.ext.jitsi}") { 
+                 implementation("org.jitsi.react:jitsi-meet-sdk:${rootProject.ext.jitsi}") {
                         transitive = true
                  }
             }
