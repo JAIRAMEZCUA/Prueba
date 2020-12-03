@@ -115,7 +115,7 @@ El SDK incluye los siguientes modulos:
       ** Módulo Manager: **
       dependencies {
             //Manager
-            implementation(group: 'com.na_at.sdk', name: 'manager', version: "0.12.0", ext: 'aar'){
+            implementation(group: 'com.na_at.sdk', name: 'manager', version:  $version, ext: 'aar'){
                 transitive=true
             }
       }
@@ -123,14 +123,14 @@ El SDK incluye los siguientes modulos:
       **Módulo Data:**
       dependencies {
             //Data
-            implementation(group: 'com.na_at.sdk', name: 'data', version: "0.12.0", ext: 'aar'){
+            implementation(group: 'com.na_at.sdk', name: 'data', version:  $version, ext: 'aar'){
                     transitive=true
             }
       }
       **Módulo Commons:**
       dependencies {
              //Commons
-             implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0", ext: 'aar'){
+             implementation(group: 'com.na_at.sdk', name: 'commons', version:  $version, ext: 'aar'){
                        transitive=true
              }
       }
@@ -173,7 +173,7 @@ Agregamos la dependencia en **build.gradle**:
 
         dependencies {
                     //Face
-                    implementation(group: 'com.na_at.sdk', name: 'face', version: "0.12.0", ext: 'aar'){
+                    implementation(group: 'com.na_at.sdk', name: 'face', version:  $version, ext: 'aar'){
                         transitive=true
                     }
         }
@@ -218,7 +218,7 @@ Mostraremos el fragmento de configuración para el modo de tiempo:
              dependencies {
                   //zoom
                   implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
-                  implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0", ext: 'aar')
+                  implementation(group: 'com.na_at.sdk', name: 'face-zoom', version:  $version, ext: 'aar')
              }
 Mostraremos el fragmento de código para el modulo de face-zoom.
 
@@ -289,7 +289,7 @@ Agregamos la dependencia en **build.gradle**:
 
      dependencies {
          //identity
-         implementation(group: 'com.na_at.sdk', name: 'identity', version: "0.12.0", ext: 'aar'){
+         implementation(group: 'com.na_at.sdk', name: 'identity', version:  $version, ext: 'aar'){
              transitive=true
          }
      }
@@ -310,7 +310,7 @@ Agregamos la dependencia en **build.gradle**:
 
               dependencies {
                    //face-acuant
-                    implementation(group: 'com.na_at.sdk', name: 'face-acuant', version: '0.12.0', ext: 'aar')
+                    implementation(group: 'com.na_at.sdk', name: 'face-acuant', version:  $version, ext: 'aar')
               }
 
 
@@ -345,7 +345,7 @@ Mostraremos el fragmento de código para el modulo de face-Acuant.
         **Módulo ID :**
             dependencies {
                 //identity
-                implementation(group: 'com.na_at.sdk', name: 'identity', version: "0.12.0", ext: 'aar'){
+                implementation(group: 'com.na_at.sdk', name: 'identity', version:  $version ,  ext: 'aar'){
                 transitive=true
                 }
             }
@@ -354,44 +354,37 @@ Mostraremos el fragmento de código para el modulo de face-Acuant.
         **Módulo Enrolamiento :**
             dependencies {
              //enroll
-             implementation(group: 'com.na_at.sdk', name: 'enroll', version: '0.12.0', ext: 'aar'){
+             implementation(group: 'com.na_at.sdk', name: 'enroll', version:  $version , ext: 'aar'){
                  transitive = true
                 }
              }
-        **Módulo Face-Zoom :**
-            dependencies {
-                //zoom
-                implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
-                implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0", ext: 'aar'){
-                  transitive = true
-                }
-            }
+
 
          **Módulo Resume :**
          dependencies {
              //resume
-             implementation(group: 'com.na_at.sdk', name: 'resume', version: "0.12.0", ext: 'aar'){
+             implementation(group: 'com.na_at.sdk', name: 'resume', version:  $version, ext: 'aar'){
                 transitive=true
              }
          }
         **Módulo Sign :**
             dependencies {
              //sign
-             implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: '0.12.0', ext: 'aar'){
+             implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version:  $version , ext: 'aar'){
                  transitive = true
                  }
              }
         **Módulo Appointments:**
             dependencies {
                 //appointment
-                implementation(group: 'com.na_at.sdk', name: 'appointments', version: '0.12.0', ext: 'aar'){
+                implementation(group: 'com.na_at.sdk', name: 'appointments', version:  $version , ext: 'aar'){
                     transitive=true
                 }
             }
          **Módulo Fingerprints:**
          dependencies {
            //finger
-           implementation(group: 'com.na_at.sdk', name: 'fingerprints', version: '0.12.0', ext: 'aar'){
+           implementation(group: 'com.na_at.sdk', name: 'fingerprints', version:  $version , ext: 'aar'){
                  transitive=true
            }
 
