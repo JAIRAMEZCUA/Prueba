@@ -479,7 +479,9 @@ Mostraremos el fragmento de código para el modulo de Enrolamiento.
     }
 
 ### Setup para el módulo de Firma  ###
+
 **Nota Para el módulo firma es obligatorio tener el xml y el pdf como entradas: las fuentes de entrada pueden ser un AsseetSource, FileSource y URLSource: **
+    
     SignConfig.FadSource xmlSource = new AssetSource(binding.textXmlAssetName.getText().toString());
     SignConfig.FadSource pdfSource = new AssetSource(binding.textPdfAssetName.getText().toString());
 
