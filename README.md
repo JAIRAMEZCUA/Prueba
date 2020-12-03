@@ -478,6 +478,52 @@ Mostraremos el fragmento de código para el modulo de Enrolamiento.
 
     }
 
+### Setup para el módulo de Firma  ###
+**Nota Para el módulo firma es obligatorio tener el xml y el pdf como entradas: las fuentes de entrada pueden ser un AsseetSource, FileSource y URLSource: **
+    SignConfig.FadSource xmlSource = new AssetSource(binding.textXmlAssetName.getText().toString());
+    SignConfig.FadSource pdfSource = new AssetSource(binding.textPdfAssetName.getText().toString());
+
+    new FileSource(“url de archivo”);
+    new UriSource(“uri del archivo”);
+    
+**Para hacer uso de  este módulo necesita estar registrado en el Backend de FAD **
+
+
+Agregamos la dependencia en **build.gradle**:
+
+   **Módulo Firma:**
+
+    //sign
+    implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: $version, ext: 'aar'){
+        transitive = true
+    }
+
+Mostraremos el fragmento de código para el modulo de Firma.
+
+    private SignConfig getSignConfig() {
+        SignConfig.FadSource xmlSource = new AssetSource("data.xml");
+        SignConfig.FadSource pdfSource = new AssetSource("pdf.pdf");
+        return SignConfig.builder(xmlSource, pdfSource)
+                // strings
+                .setEndpoint(binding.textEndpoint.getText().toString())
+                .setPrivacyText(binding.textPrivacyText.getText().toString()) //configuración para mostrar el aviso de privacidad
+                // integers
+                .setTimeoutRequest(timeout) //tiempo de espera máximo antes de la respuesta del servidor
+                .setAvailableFreeSpace(freeSpace) //espacio disponible libre en dispositivo para que pueda operar
+                .setAvailableFreeRam(freeRam) //espacio disponible en memoria RAM para que pueda operar
+                // booleans
+                .setEnableOAuth(binding.checkOauthEnable.isChecked()) //en caso de estar habilitada la autorización al back end este requerirá la configuración de este parámetro.
+                .setSoCracked(binding.checkSoCracked.isChecked())
+                .setVideoConfirmationMandatory(binding.checkVideoConfirmation.isChecked())
+                .setEmailsEnabled(binding.checkEmailsEnable.isChecked())
+                .setLastGetKeys(binding.checkLastGetKeys.isChecked())
+                .setShowPrivacyView(binding.checkShowPrivacyView.isChecked()) //configuración para mostrar u ocultar el aviso de privacidad
+                .setOverwrite(binding.checkOverwrite.isChecked())
+                .build();
+
+    }
+
+
 ### Setup para el módulo de Videoconference ###
 
 Agregamos la dependencia en **build.gradle**:
