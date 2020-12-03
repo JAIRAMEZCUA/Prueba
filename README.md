@@ -134,6 +134,7 @@ El SDK incluye los siguientes modulos:
 **Existen dos maneras de auntentificación para hacer uso de los módulos del SDK son :**
 
 **Usando client, secret, username y password**
+
 **Usando token**
 
 
