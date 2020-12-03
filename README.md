@@ -131,12 +131,12 @@ El SDK incluye los siguientes modulos:
       }
 
 ## Credenciales para el uso de los módulos ##
-**Necesitamos agregar las credenciales para hacer uso de los módulos del SDK , por lo cual agregamos las credenciales para posterior asignarlas a la configuración**
+**Existen dos maneras de auntentificación para hacer uso de los módulos del SDK son :**
 
-Hay dos maneras para la construcción:
 
-Usando client, secret, username y password
-Usando token
+    **Usando client, secret, username y password
+
+    **Usando token
 
 
 Si la app no tiene su propio login se usa la opción 1 y para ello se requiere pedir las credenciales (client, secret, username, password) a la gerencia de desarrollo FAD avillanueva@na-at.com.mx  , caso contrario la opción 2
@@ -144,7 +144,7 @@ Si la app no tiene su propio login se usa la opción 1 y para ello se requiere p
 La primer autenticación es con client, secret, username y password, los accesos se deben solicitar a la gerencia de fad al correo ‘avillanueva@na-at.com.mx’
 
 Cuando se inicializa el manager por primera vez se tiene que autenticar con el servidor para ver que la aplicación está autorizada para su uso,
-     
+
      //objeto de credenciales (oAuth2)
         FadCredentials credentials = FadCredentials.builder()
                 .client("fad")
@@ -152,7 +152,7 @@ Cuando se inicializa el manager por primera vez se tiene que autenticar con el s
                 .username(BuildConfig.USERNAME)
                 .password(BuildConfig.PASSWORD)
                 .build();
-                
+
 La segunda autenticación es por medio de Token, la aplicación host es la que se autentica
 
 
