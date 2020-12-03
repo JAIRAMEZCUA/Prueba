@@ -435,21 +435,20 @@ Agregamos la dependencia en **build.gradle**:
 
 Mostraremos el fragmento de código para el modulo de Fingerprints.
 
-   private FingerprintIDConfig getFingerprintIDConfig() {
-
-        FingerprintIDConfig.Builder builder = FingerprintIDConfig.builder()
-                .setTypeScanner(FingerprintIDConfig.SCANNER_TYPE_KARALUNDI)
-                .setMaxNfiqValid(5)
-                .setMaxCaptureAttempts(-1)
-                .setOptionOptic(false)
-                .setOptionCamera(false)
-                .setFingerOptions(new Finger[]{Finger.LEFT_INDEX, Finger.LEFT_MIDDLE, Finger.LEFT_RING, Finger.LEFT_LITTLE, Finger.RIGHT_INDEX, Finger.RIGHT_MIDDLE, Finger.RIGHT_RING, Finger.RIGHT_LITTLE})
-                //.setFingerOptions(new Finger[] {Finger.LEFT_INDEX})
-                .addProp("API_KEY", "AIzaSyAlG8ML3lOwPHiqIlte6SUnOuNGzfDFi5g")
-                .addProp("LICENSE", "com.fad.bio.poc2020-06-15 00 00 00.lic")
-                .setCloseOnError(false);
-        return builder.build();
-   }
+       private FingerprintIDConfig getFingerprintIDConfig() {
+            FingerprintIDConfig.Builder builder = FingerprintIDConfig.builder()
+                    .setTypeScanner(FingerprintIDConfig.SCANNER_TYPE_KARALUNDI)
+                    .setMaxNfiqValid(5)
+                    .setMaxCaptureAttempts(-1)
+                    .setOptionOptic(false)
+                    .setOptionCamera(false)
+                    .setFingerOptions(new Finger[]{Finger.LEFT_INDEX, Finger.LEFT_MIDDLE, Finger.LEFT_RING, Finger.LEFT_LITTLE, Finger.RIGHT_INDEX, Finger.RIGHT_MIDDLE, Finger.RIGHT_RING, Finger.RIGHT_LITTLE})
+                    //.setFingerOptions(new Finger[] {Finger.LEFT_INDEX})
+                    .addProp("API_KEY", "AIzaSyAlG8ML3lOwPHiqIlte6SUnOuNGzfDFi5g")
+                    .addProp("LICENSE", "com.fad.bio.poc2020-06-15 00 00 00.lic")
+                    .setCloseOnError(false);
+            return builder.build();
+       }
 
 
 
