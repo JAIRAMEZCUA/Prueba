@@ -13,8 +13,6 @@ Este software es de NA-AT technologies
 
 Este documento provee la información detallada sobre las dependencias necesarias para el funcionamiento de los modulos de FAD DE ANDROID SDK.
 
-**Note:** Para tener la versión actualizada de las dependencias de FAD, solicitar dicha versión al área de desarrollo por medio de un correo electrónico a las siguientes cuentas:  [amartinez@na-at.com.mx] y [avillanueva@na-at.com.mx]
-
 
 ----------
 
@@ -54,6 +52,13 @@ El SDK incluye los siguientes modulos:
 
 
 ### Setup General ###
+
+**La versión actual de las dependencias es  es la [12.0.0], aunque esta puede cambiar.**
+
+**Nota:** Para tener la versión actualizada de las dependencias de FAD, solicitar dicha versión al área de desarrollo por medio de un correo electrónico a las siguientes cuentas:  [amartinez@na-at.com.mx] y [avillanueva@na-at.com.mx]
+
+        $version=12.0.0
+
 **Colocamos los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK.**
 
 
@@ -311,8 +316,8 @@ Agregamos la dependencia en **build.gradle**:
 
 Mostraremos el fragmento de código para el modulo de face-Acuant.
 
- private void testIdentity() {
 
+ private void testIdentity() {
 
         FadConfig.Builder builder = FadConfig.builder()
                 .endpoint(StringUtils.encode(BuildConfig.ENDPOINT))
@@ -332,7 +337,7 @@ Mostraremos el fragmento de código para el modulo de face-Acuant.
                 .config(builder.build());
 
         startActivityForResult(intentBuilder.build(this), FAD_SDK_REQUEST);
-    }
+ }
 
 **Estamos implementando los demás modulos**
 
