@@ -506,18 +506,23 @@ Mostraremos el fragmento de código para el modulo de Enrolamiento.
     new FileSource(“url de archivo”);
     new UriSource(“uri del archivo”);
 
-**Para hacer uso de  este módulo necesita estar registrado en el Backend de FAD**
+**Para hacer uso de  este módulo necesita estar registrado en el Backend de FAD **
 
+Necesitamos implementar la implementación de la libreria OPENCV.
 
 Agregamos la dependencia en **build.gradle**:
 
    **Módulo Firma:**
-
-    //sign
-    implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: $version, ext: 'aar'){
-        transitive = true
+   
+    dependencies {
+        
+            //sign
+            implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: $version, ext: 'aar'){
+                transitive = true
+            }
+            //opencv
+            implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar')
     }
-
 Mostraremos el fragmento de código para el modulo de Firma.
 
     private SignConfig getSignConfig() {
@@ -575,7 +580,7 @@ Mostraremos el fragmento de código para el modulo de Videoconference.
 
 ### Setup para el módulo de Document ###
 
-**Requisitos , necesitamos tener implementado el modulo de CameraWidget y OpenCv.**
+**Requisitos , necesitamos tener implementado el modulo de CameraWidget y OpenCV.**
 
 Agregamos la dependencia en **build.gradle**:
 
