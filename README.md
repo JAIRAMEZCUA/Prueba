@@ -59,6 +59,8 @@ El SDK incluye los siguientes modulos:
 
         $version = "12.0.0"
 
+**Importante : Necesitamos que la app debe estar registrada  en la plataforma de Firebase  por lo cual necesitamos agregar a la App el archivo de  “google-services.json”.**
+
 **Colocamos los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK.**
 
 
@@ -304,17 +306,21 @@ Mostraremos el fragmento de código para el modulo de identity
 
 ### Setup para el módulo de Identity-tensor flow ###
 
-**Nota para ocupar este modulo se necesita tener implementado la dependencia de Identity.**
+**Requisitos :**
+
+1.  Para ocupar este modulo se necesita tener implementado la dependencia de Identity.
+2.  Necesita estar registrada la App en nuestro Backend para que pueda hacer uso de este modulo.
+3.  Para el módulo identity-tf es obligatorio tener el xml y el txt como entradas: las fuentes de entrada pueden ser un AsseetSource, FileSource y URLSource.
 
 Agregamos la dependencia en **build.gradle**:
 
-              dependencies {
-                   //face-acuant
-                    implementation(group: 'com.na_at.sdk', name: 'face-acuant', version:  $version, ext: 'aar')
-              }
+   dependencies {
+     //face-acuant
+     implementation(group: 'com.na_at.sdk', name: 'face-acuant', version:  $version, ext: 'aar')
+   }
 
 
-Mostraremos el fragmento de código para el modulo de face-Acuant.
+Mostraremos el fragmento de código para el modulo de Identity-tensor flow.
 
 
  private void testIdentity() {
@@ -328,8 +334,9 @@ Mostraremos el fragmento de código para el modulo de face-Acuant.
         // default identity config
         builder.addConfig(DefaultIdentityConfig.build());
 
-        ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_FRONT, INEProcessor.class);
-        ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_BACK, INEProcessor.class);
+        //con las siguientes lineas indicamos que el reconocimiento de la INE será por medio de tensor-flow
+        ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_FRONT, INEProcessorTF.class);
+        ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_BACK, INEProcessorTF.class);
 
         FadManager.IntentBuilder intentBuilder = fadManager.newIntentBuilder()
                 .showHeader(true)
