@@ -227,7 +227,7 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
     private FaceConfig getFaceZoomConfig(){
         return FaceConfig.builder()
                 .setType(FaceConfig.ZOOM) //declarando que el modulo de face ocupara el Zoom.
-                .addProperty(FaceConfig.ZOOM_API_KEY, "d5jKXRWPvpulWiBPEqGcnlDsx2ionDwn") //La clave necesita ser solicitada desde [https://www.facetec.com/]
+                .addProperty(FaceConfig.ZOOM_API_KEY, API_KEY_ZOOM) //La clave necesita ser solicitada desde [https://www.facetec.com/]
                //.setSimilarityPercent(50) //Se compara con el modulo de identity previamente ejecutado para comparar rostros.
                 .build();
     }
@@ -485,7 +485,7 @@ Mostraremos el fragmento de código para el modulo de Enrolamiento.
 
     new FileSource(“url de archivo”);
     new UriSource(“uri del archivo”);
-    
+
 **Para hacer uso de  este módulo necesita estar registrado en el Backend de FAD **
 
 
@@ -553,6 +553,44 @@ Mostraremos el fragmento de código para el modulo de Videoconference.
                 .build();
     }
 
+### Setup para el módulo de Document ###
+
+**Requisitos , necesitamos tener implementado el modulo de CameraWidget y la implementación OCR.
+Agregamos la dependencia en **build.gradle**:
+
+   **Módulo Document:**
+
+          dependencies {
+                 // OtherDocs
+                 implementation(group: 'com.na_at.sdk', name: 'other_docs', version: $version , ext: 'aar')
+                     transitive = true
+                 }
+
+                 implementation(group: 'com.naat', name: 'camerawidget', version: "3.0.0_alpha", ext: 'aar')
+
+          }
+
+
+Mostraremos el fragmento de código para el modulo de Document.
+
+    private OtherDocsConfig getOtherDocConfig() {
+        Document document = new Document("Comprobante");
+        document.setName("Comprobante");
+        Document document1 = new Document("rfc");
+        document1.setName("RFC");
+        document1.setDescription("Registro Federal de Contribuyentes");
+        Document document2 = new Document("curp");
+        document2.setName("CURP");
+        OtherDocsConfig.Builder builder = OtherDocsConfig.builder()
+                .addDocument(document)
+                .addDocument(document1)
+                .addDocument(document2)
+                .setOptionalMode(true)
+                .setLimitDocuments(1);
+        return builder.build();
+    }
+
+
 
 
 
@@ -562,13 +600,6 @@ Mostraremos el fragmento de código para el modulo de Videoconference.
 
 **Estamos implementando los demás modulos**
 
-        **Módulo Sign :**
-            dependencies {
-             //sign
-             implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version:  $version , ext: 'aar'){
-                 transitive = true
-                 }
-             }
         **Módulo Appointments:**
             dependencies {
                 //appointment
