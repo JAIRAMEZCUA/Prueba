@@ -102,7 +102,7 @@ El SDK incluye los siguientes modulos:
     }
     apply plugin: "com.jfrog.artifactory"
     apply plugin: 'maven-publish'
-}
+ }
 
 **Nota:** Todos los modulos necesitan implementar los modulos de Commons,Data y Manager, por lo cual agregamos sus  dependencias en el **build.gradle**:
 
