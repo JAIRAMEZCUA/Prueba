@@ -298,10 +298,10 @@ Agregamos la dependencia en **build.gradle**:
          implementation(group: 'com.na_at.sdk', name: 'identity', version:  $version, ext: 'aar'){
              transitive=true
          }
-         
+
         //ocr
        implementation(group: 'com.naat', name: 'ocr.sdk', version: $ocr_version, ext: 'aar')
-       
+
         //opencv
         implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar')
 
@@ -323,6 +323,8 @@ Mostraremos el fragmento de código para el modulo de identity
 2.  Necesita estar registrada la App en nuestro Backend para que pueda hacer uso de este modulo.
 3.  Para el módulo identity-tf es obligatorio tener el xml y el txt como entradas: las fuentes de entrada pueden ser un AsseetSource, FileSource y URLSource.
 
+**Nota : Implementamos el modulo de camera Widget **
+
 Agregamos la dependencia en **build.gradle**:
 
        dependencies {
@@ -330,6 +332,13 @@ Agregamos la dependencia en **build.gradle**:
             implementation(group: 'com.na_at.sdk', name: 'identity-tf', version: $version,  ext: 'aar'){
                 transitive(true)
             }
+
+            // tensorflow
+            implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly') { changing = true }
+
+             //camera widget
+             implementation(group: 'com.naat', name: 'camerawidget', version: $version_widget, ext: 'aar')
+
        }
 
 
