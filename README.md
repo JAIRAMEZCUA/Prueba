@@ -144,13 +144,15 @@ Si la app no tiene su propio login se usa la opción 1 y para ello se requiere p
 La primer autenticación es con client, secret, username y password, los accesos se deben solicitar a la gerencia de fad al correo ‘avillanueva@na-at.com.mx’
 
 Cuando se inicializa el manager por primera vez se tiene que autenticar con el servidor para ver que la aplicación está autorizada para su uso,
-        //objeto de credenciales (oAuth2)
+     
+     //objeto de credenciales (oAuth2)
         FadCredentials credentials = FadCredentials.builder()
                 .client("fad")
                 .secret("fadsecret")
                 .username(BuildConfig.USERNAME)
                 .password(BuildConfig.PASSWORD)
                 .build();
+                
 La segunda autenticación es por medio de Token, la aplicación host es la que se autentica
 
 
