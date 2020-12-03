@@ -392,8 +392,9 @@ Mostraremos el fragmento de código para el modulo de Identity-Aqua
 ### Setup para el módulo de Resume ###
 
 Agregamos la dependencia en **build.gradle**:
+
     **Módulo Resume :**
-    
+
          dependencies {
              //resume
              implementation(group: 'com.na_at.sdk', name: 'resume', version:  $version, ext: 'aar'){
@@ -414,27 +415,28 @@ Mostraremos el fragmento de código para el modulo de Resume.
 
 ### Setup para el módulo de Fingerprints ###
 
-**Nota : este módulo no es compatible con t-f.
+**Nota : este módulo no es compatible con t-f.**
 
 Agregamos la dependencia en **build.gradle**:
 
    **Módulo Fingerprints:**
 
-     dependencies {
-           //finger
-           implementation(group: 'com.na_at.sdk', name: 'fingerprints', version:  $version , ext: 'aar'){
-                 transitive=true
-           }
+         dependencies {
+               //finger
+               implementation(group: 'com.na_at.sdk', name: 'fingerprints', version:  $version , ext: 'aar'){
+                     transitive=true
+               }
 
-           // karalundi sdk **Se necesita hacer el POM**
-           implementation(group: 'com.identy.core-native', name: 'core-native', version: '2.9.2.6', ext: 'aar')
-           api ('com.google.android.gms:play-services-safetynet:16.0.0')
-     }
+               // karalundi sdk **Se necesita hacer el POM**
+               implementation(group: 'com.identy.core-native', name: 'core-native', version: '2.9.2.6', ext: 'aar')
+               api ('com.google.android.gms:play-services-safetynet:16.0.0')
+         }
 
 
 Mostraremos el fragmento de código para el modulo de Fingerprints.
 
    private FingerprintIDConfig getFingerprintIDConfig() {
+
         FingerprintIDConfig.Builder builder = FingerprintIDConfig.builder()
                 .setTypeScanner(FingerprintIDConfig.SCANNER_TYPE_KARALUNDI)
                 .setMaxNfiqValid(5)
@@ -446,8 +448,6 @@ Mostraremos el fragmento de código para el modulo de Fingerprints.
                 .addProp("API_KEY", "AIzaSyAlG8ML3lOwPHiqIlte6SUnOuNGzfDFi5g")
                 .addProp("LICENSE", "com.fad.bio.poc2020-06-15 00 00 00.lic")
                 .setCloseOnError(false);
-
-
         return builder.build();
    }
 
