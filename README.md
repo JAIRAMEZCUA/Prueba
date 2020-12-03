@@ -206,7 +206,7 @@ Mostraremos el fragmento de código para el modulo de face-Acuant.
     private void testAcuantFace() {
 
         FadConfig.Builder builder = FadConfig.builder()
-                .endpoint(StringUtils.encode("https://uat.firmaautografa.com"))
+                .endpoint(StringUtils.encode(BUILD.ENDPOINT))
                 .requestLocation(false)
                 .preventScreenCapture(false)
                 .credentials(credentials);
