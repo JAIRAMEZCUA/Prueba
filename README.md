@@ -194,6 +194,7 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
     }
 ### Setup para el módulo de Face-Acuant ###
 **Nota para ocupar este modulo se necesita tener implementado la dependencia de Face.**
+
  Agregamos la dependencia en **build.gradle**:
 
              dependencies {
@@ -225,20 +226,17 @@ Mostraremos el fragmento de código para el modulo de face-Acuant.
     }
 
     private ProviderConfiguration getProvideConfiguration() {
-        ProviderConfiguration providerConfiguration = new ProviderConfiguration();
-        //Aquant
-        providerConfiguration.setAcUserName("Acuant_Admin@BdC.com");
-        providerConfiguration.setAcPassword("J6Jqt2XbQ6^)GefD");
-        providerConfiguration.setAcSubscriptionId("ce8066aa-1196-4071-a4c3-ededff1c3f17");
-        providerConfiguration.setAcFrmEndpoint("https://frm.acuant.net");
-        providerConfiguration.setAcAssureIdEndpoint("https://services.assureid.net");
-        providerConfiguration.setAcMediscanEndpoint("https://medicscan.acuant.net");
-        providerConfiguration.setAcPassiveLivenessEndpoint("https://us.passlive.acuant.net");
-        providerConfiguration.setAcAcasEndpoint("https://acas.acuant.net");
-        providerConfiguration.setAcOzoneEndpoint("https://ozone.acuant.net");
-        //ReadId
-        providerConfiguration.setRiBaseUrl("https://saas-preprod.readid.com:443/odata/v1/ODataServlet/");
-        providerConfiguration.setRiAccessKey("096ecf43-3424-4dd1-91f7-419cdb34ebe1");
+            ProviderConfiguration providerConfiguration = new ProviderConfiguration();
+            //Aquant
+                providerConfiguration.setAcUserName($user);
+                providerConfiguration.setAcPassword($password);
+                providerConfiguration.setAcSubscriptionId($suscripcionID);
+                providerConfiguration.setAcFrmEndpoint($FRMENDPOINT);
+                providerConfiguration.setAcAssureIdEndpoint($ASSUREENDPOINT);
+                providerConfiguration.setAcMediscanEndpoint($MediscanEndpoin);
+                providerConfiguration.setAcPassiveLivenessEndpoint($LivenessEndpoint);
+                providerConfiguration.setAcAcasEndpoint($AcasEndpoint);
+                providerConfiguration.setAcOzoneEndpoint($OzoneEndpoint);
 
         return providerConfiguration;
     }
