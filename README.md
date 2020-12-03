@@ -171,10 +171,28 @@ Mostraremos el fragmento de configuración para el modo de tiempo:
                 .onlyRearCamera(false)
                 .build();
     }
-    
-    
-### Setup para el módulo de Face###
+
+
+### Setup para el módulo de Face-Zoom ###
+**Nota para ocupar este modulo se necesita tener implementado la dependencia de Face.**
+
  Agregamos la dependencia en **build.gradle**:
+
+             dependencies {
+                  //zoom
+                  implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
+                  implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0_alpha_new", ext: 'aar')
+             }
+Mostraremos el fragmento de código para el modulo de face-zoom.
+
+    private FaceConfig getFaceZoomConfig(){
+        return FaceConfig.builder()
+                .setType(FaceConfig.ZOOM) //declarando que el modulo de face ocupara el Zoom.
+                .addProperty(FaceConfig.ZOOM_API_KEY, "d5jKXRWPvpulWiBPEqGcnlDsx2ionDwn") //La clave necesita ser solicitada desde [https://www.facetec.com/]
+               //.setSimilarityPercent(50) //Se compara con el modulo de identity previamente ejecutado para comparar rostros.
+                .build();
+    }
+
         **Módulo ID :**
             dependencies {
                 //identity

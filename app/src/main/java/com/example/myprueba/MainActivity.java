@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity  {
                         .preventScreenCapture(false)
                         .credentials(credentials);
 
-                builder.addConfig(DefaultIdentityConfig.build());
+               // builder.addConfig(DefaultIdentityConfig.build());
                 builder.addConfig(getFaceZoomConfig());
                 builder.addConfig(getResumeConfig());
 
@@ -319,8 +319,6 @@ public class MainActivity extends AppCompatActivity  {
 
 
     private FaceConfig getFaceZoomConfig(){
-        Log.d("FACECONFIG", "SE EJECUTO ZOOM");
-
         return FaceConfig.builder()
                 .setType(FaceConfig.ZOOM)
                 .addProperty(FaceConfig.ZOOM_API_KEY, "d5jKXRWPvpulWiBPEqGcnlDsx2ionDwn")
