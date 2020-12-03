@@ -133,10 +133,8 @@ El SDK incluye los siguientes modulos:
 ## Credenciales para el uso de los módulos ##
 **Existen dos maneras de auntentificación para hacer uso de los módulos del SDK son :**
 
-
-    **Usando client, secret, username y password
-
-    **Usando token
+**Usando client, secret, username y password**
+**Usando token**
 
 
 Si la app no tiene su propio login se usa la opción 1 y para ello se requiere pedir las credenciales (client, secret, username, password) a la gerencia de desarrollo FAD avillanueva@na-at.com.mx  , caso contrario la opción 2
