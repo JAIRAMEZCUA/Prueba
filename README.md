@@ -57,7 +57,7 @@ El SDK incluye los siguientes modulos:
 
 **Nota:** Para tener la versión actualizada de las dependencias de FAD, solicitar dicha versión al área de desarrollo por medio de un correo electrónico a las siguientes cuentas:  [amartinez@na-at.com.mx] y [avillanueva@na-at.com.mx]
 
-        $version=12.0.0
+        $version = "12.0.0"
 
 **Colocamos los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK.**
 
