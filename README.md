@@ -393,6 +393,7 @@ Mostraremos el fragmento de código para el modulo de Identity-Aqua
 
 Agregamos la dependencia en **build.gradle**:
     **Módulo Resume :**
+    
          dependencies {
              //resume
              implementation(group: 'com.na_at.sdk', name: 'resume', version:  $version, ext: 'aar'){
