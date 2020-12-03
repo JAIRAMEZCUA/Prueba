@@ -229,11 +229,14 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
 
  Agregamos la dependencia en **build.gradle**:
 
-             dependencies {
-                  //face-acuant
-                   implementation(group: 'com.na_at.sdk', name: 'face-acuant', version: '0.12.0', ext: 'aar')
-             }
+      dependencies {
+          //face-acuant
+          implementation(group: 'com.na_at.sdk', name: 'face-acuant', version: '0.12.0', ext: 'aar')
+      }
+
 Mostraremos el fragmento de código para el modulo de face-Acuant.
+
+Construimos el objeto de Face-Acuant, asignando las credenciales y su configuración del módulo
 
     private void testAcuantFace() {
 
@@ -257,6 +260,8 @@ Mostraremos el fragmento de código para el modulo de face-Acuant.
         startActivityForResult(intentBuilder.build(this), FAD_SDK_REQUEST_CODE);
     }
 
+Asignamos la configuració para uso del módulo de face-acuant
+
     private ProviderConfiguration getProvideConfiguration() {
             ProviderConfiguration providerConfiguration = new ProviderConfiguration();
             //Aquant
@@ -273,12 +278,37 @@ Mostraremos el fragmento de código para el modulo de face-Acuant.
         return providerConfiguration;
     }
 
+### Setup para el módulo de Identity ###
+
+Agregamos la dependencia en **build.gradle**:
+
+     dependencies {
+         //identity
+         implementation(group: 'com.na_at.sdk', name: 'identity', version: "0.12.0", ext: 'aar'){
+             transitive=true
+         }
+     }
+
+
+Mostraremos el fragmento de código para el modulo de identity
+
+    private IdentityConfig identityConfig(){
+    //Asignamos la configuración por default del identity que es para reconocer la INE o identificación del usuario.
+        return DefaultIdentityConfig.build();
+    }
+
+### Setup para el módulo de Identity-tensor flow ###
+
+**Nota para ocupar este modulo se necesita tener implementado la dependencia de Identity.**
+
 Agregamos la dependencia en **build.gradle**:
 
               dependencies {
                    //face-acuant
                     implementation(group: 'com.na_at.sdk', name: 'face-acuant', version: '0.12.0', ext: 'aar')
               }
+
+
 Mostraremos el fragmento de código para el modulo de face-Acuant.
 
  private void testIdentity() {
