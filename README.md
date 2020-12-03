@@ -411,7 +411,7 @@ Mostraremos el fragmento de código para el modulo de Resume.
     }
 
 
-### Setup para el módulo de Resume ###
+### Setup para el módulo de Fingerprints ###
 
 **Nota : este módulo no es compatible con t-f.
 
@@ -452,6 +452,31 @@ Mostraremos el fragmento de código para el modulo de Fingerprints.
 
 
 
+### Setup para el módulo de Enrolamiento ###
+
+Agregamos la dependencia en **build.gradle**:
+
+    **Módulo Enrolamiento :**
+
+    dependencies {
+    //enroll
+       implementation(group: 'com.na_at.sdk', name: 'enroll', version:  $version , ext: 'aar'){
+           transitive = true
+       }
+    }
+
+
+Mostraremos el fragmento de código para el modulo de Enrolamiento.
+
+    private EnrollConfig enrollConfig(){
+      return EnrollConfig.builder()
+                .scannerType(EnrollConfig.SCANNER_TYPE_WATSON) //configuración para el tipo de escáner
+                .minFingerCapture(0) //configuración del número mínimo de huellas a capturar
+                .maxCaptureAttempts(3) //intentos máximos de captura
+                .maxValidNfiq(10) //configuración del número máximo de validaciones a ejecutar.
+                .build();
+
+    }
 **Estamos implementando los demás modulos**
 
 
@@ -464,13 +489,7 @@ Mostraremos el fragmento de código para el modulo de Fingerprints.
             }
 
 
-        **Módulo Enrolamiento :**
-            dependencies {
-             //enroll
-             implementation(group: 'com.na_at.sdk', name: 'enroll', version:  $version , ext: 'aar'){
-                 transitive = true
-                }
-             }
+
 
 
 
