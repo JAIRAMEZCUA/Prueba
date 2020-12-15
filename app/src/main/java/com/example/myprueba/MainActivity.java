@@ -15,12 +15,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
-
-import com.example.myprueba.tf.processor.INEProcessorTF;
-import com.na_at.sdk.commons.Constants;
 import com.na_at.sdk.commons.config.FadConfig;
 import com.na_at.sdk.commons.config.FadCredentials;
 import com.na_at.sdk.commons.config.module.AppointmentConfig;
+import com.na_at.sdk.commons.config.module.AuthConfig;
 import com.na_at.sdk.commons.config.module.Document;
 import com.na_at.sdk.commons.config.module.EnrollConfig;
 import com.na_at.sdk.commons.config.module.FaceConfig;
@@ -32,8 +30,10 @@ import com.na_at.sdk.commons.config.module.SignConfig;
 import com.na_at.sdk.commons.config.module.VideoConferenceConfig;
 import com.na_at.sdk.commons.data.AssetSource;
 import com.na_at.sdk.commons.model.enroll.Finger;
+import com.na_at.sdk.commons.model.identity.ProviderConfiguration;
 import com.na_at.sdk.commons.util.FileManager;
 import com.na_at.sdk.commons.util.StringUtils;
+import com.na_at.sdk.data.db.entity.auth.AuthModule;
 import com.na_at.sdk.identity.model.DefaultIdentityConfig;
 import com.na_at.sdk.identity.processor.ImageProcessor;
 import com.na_at.sdk.identity.processor.ImageProcessorFactory;
@@ -44,13 +44,7 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity  {
 
     private static final int FAD_SDK_REQUEST_CODE = 1234;
-    private static final int FAD_SDK_REQUEST_CODE_2 = 12345;
-    private static final int FAD_SDK_REQUEST_CODE_3 = 345;
-    private static final int FAD_SDK_REQUEST_CODE_4 = 3458;
-    private static final int FAD_SDK_REQUEST_CODE_5 = 6558;
-    private static final int FAD_SDK_REQUEST_CODE_6 = 9458;
-    private static final int FAD_SDK_REQUEST_CODE_7 = 458;
-    private static final int FAD_SDK_REQUEST_CODE_8 = 658;
+
 
 
     private FadManager mFadManager;
@@ -59,7 +53,13 @@ public class MainActivity extends AppCompatActivity  {
     private File file;
     FadCredentials credentials;
 
-    Button mbtnFER,mbtnZTS;
+    Button mbtnZTS;
+
+    Button mbtnFace,mBtnFZoom,btnAcuant;
+    Button btnIdenty,btnIdentyFlow;
+    Button btnAut;
+
+    Button btnConfi1;
 
     Button btnEnroll,btnSign,btnFinger,btnVideo,btnOther,btnappo;
 
@@ -67,21 +67,30 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mbtnFER = findViewById(R.id.FIR);
-        mbtnZTS  = findViewById(R.id.ZTS);
+
+        mbtnFace = findViewById(R.id.btnFace);
+        mBtnFZoom = findViewById(R.id.btnFaceZoom);
+        btnAcuant = findViewById(R.id.btnAcuant);
+        btnIdenty = findViewById(R.id.btnIdenty);
+        btnIdentyFlow = findViewById(R.id.btnIdentyFlow);
+        btnOther = findViewById(R.id.btnDocs);
+        btnConfi1 = findViewById(R.id.btnConfi1);
+
+        mbtnZTS = findViewById(R.id.ZTS);
         btnEnroll = findViewById(R.id.btnEnroll);
         btnSign = findViewById(R.id.btnSign);
         btnFinger = findViewById(R.id.btnFing);
         btnVideo = findViewById(R.id.btnVideo);
-        btnOther = findViewById(R.id.btnOther);
         btnappo = findViewById(R.id.btnappoint);
+
+        btnAut = findViewById(R.id.btnaut);
 
         // build manager
         mFadManager = FadManager.builder(this)
                 .build();
 
         //credentials
-         credentials = FadCredentials.builder()
+        credentials = FadCredentials.builder()
                 .client("fad")
                 .secret("fadsecret")
                 .username("avillanueva@na-at.com.mx")
@@ -89,107 +98,51 @@ public class MainActivity extends AppCompatActivity  {
                 .build();
 
 
-         btnappo.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 FadConfig fadConfig = FadConfig.builder()
-                         .credentials(credentials)
-                         .addConfig(getAppointmentConfig())
-                         .build();
-                 FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
-                         .config(fadConfig);
-                 Intent  intent= builder.build(getApplicationContext());
-                 startActivityForResult(intent, FAD_SDK_REQUEST_CODE_8);
-             }
-         });
-         btnOther.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 FadConfig fadConfig = FadConfig.builder()
-                         .credentials(credentials)
-                         .addConfig(getOtherDocConfig())
-                         .build();
-                 FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
-                         .config(fadConfig);
-                 Intent  intent= builder.build(getApplicationContext());
-                 startActivityForResult(intent, FAD_SDK_REQUEST_CODE_7);
-             }
-         });
-         btnVideo.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 FadConfig fadConfig = FadConfig.builder()
-                         .credentials(credentials)
-                         .addConfig(getVideoConferenceConfig())
-                         .build();
-                 FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
-                         .config(fadConfig);
-                 Intent  intent= builder.build(getApplicationContext());
-                 startActivityForResult(intent, FAD_SDK_REQUEST_CODE_6);
-             }
-         });
-
-         btnSign.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 FadConfig fadConfig = FadConfig.builder()
-                         .credentials(credentials)
-                         .addConfig(getSignConfig())
-                         .build();
-                 FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
-                         .config(fadConfig);
-                 Intent  intent= builder.build(getApplicationContext());
-                 startActivityForResult(intent, FAD_SDK_REQUEST_CODE_5);
-             }
-         });
-         btnFinger.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 FadConfig fadConfig = FadConfig.builder()
-                         .credentials(credentials)
-                         .addConfig(getFingerprintIDConfig())
-                         .build();
-                 FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
-                         .config(fadConfig);
-                 Intent  intent= builder.build(getApplicationContext());
-                 startActivityForResult(intent, FAD_SDK_REQUEST_CODE_4);
-             }
-         });
-
-         btnEnroll.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 FadConfig fadConfig = FadConfig.builder()
-                         .credentials(credentials)
-                         .addConfig(enrollConfig())
-                         .build();
-                 FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
-                         .config(fadConfig);
-
-
-                 Intent  intent= builder.build(getApplicationContext());
-                 startActivityForResult(intent, FAD_SDK_REQUEST_CODE_2);
-             }
-         });
-        mbtnFER.setOnClickListener(new View.OnClickListener() {
+        btnOther.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FadConfig fadConfig = FadConfig.builder()
                         .credentials(credentials)
-                        //.addConfig(identityConfig())
-                        .addConfig(faceConfig2())
-                        .addConfig(getResumeConfig())
+                        .addConfig(getOtherDocConfig())
                         .build();
                 FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
                         .config(fadConfig);
-
-
-                Intent  intent= builder.build(getApplicationContext());
-                startActivityForResult(intent, FAD_SDK_REQUEST_CODE_3);
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
             }
         });
 
 
+        btnappo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig fadConfig = FadConfig.builder()
+                        .credentials(credentials)
+                        .addConfig(getAppointmentConfig())
+                        .build();
+                FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
+                        .config(fadConfig);
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+            }
+        });
+
+
+        btnVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig fadConfig = FadConfig.builder()
+                        .credentials(credentials)
+                        .addConfig(getVideoConferenceConfig())
+                        .build();
+                FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
+                        .config(fadConfig);
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+            }
+        });
+
+/*
         mbtnZTS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,8 +152,8 @@ public class MainActivity extends AppCompatActivity  {
                         .preventScreenCapture(false)
                         .credentials(credentials);
 
-               // builder.addConfig(DefaultIdentityConfig.build());
-                builder.addConfig(getFaceZoomConfig());
+                builder.addConfig(DefaultIdentityConfig.build());
+              //  builder.addConfig(getFaceZoomConfig());
                 builder.addConfig(getResumeConfig());
 
                 ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_FRONT, INEProcessorTF.class);
@@ -218,90 +171,207 @@ public class MainActivity extends AppCompatActivity  {
         });
     }
 
-    private SignConfig getSignConfig() {
-        SignConfig.FadSource xmlSource = new AssetSource("data.xml");
-        SignConfig.FadSource pdfSource = new AssetSource("pdf.pdf");
-        return SignConfig.builder(xmlSource, pdfSource)
-                // defaults
-                .build();
-    }
+    /*
 
 
-    private AppointmentConfig getAppointmentConfig() {
-        return AppointmentConfig
-                .builder()
-                .contactEmail("amartinez@na-at.com.mx")
-                .contactFullName("Alexis Martinez")
-                .contactNumber("5522977855")
-                .build();
-    }
-    private FingerprintIDConfig getFingerprintIDConfig() {
-        FingerprintIDConfig.Builder builder = FingerprintIDConfig.builder()
-                .setTypeScanner(FingerprintIDConfig.SCANNER_TYPE_KARALUNDI)
-                .setMaxNfiqValid(5)
-                .setMaxCaptureAttempts(-1)
-                .setOptionOptic(false)
-                .setOptionCamera(false)
-                .setFingerOptions(new Finger[]{Finger.LEFT_INDEX, Finger.LEFT_MIDDLE, Finger.LEFT_RING, Finger.LEFT_LITTLE, Finger.RIGHT_INDEX, Finger.RIGHT_MIDDLE, Finger.RIGHT_RING, Finger.RIGHT_LITTLE})
-                //.setFingerOptions(new Finger[] {Finger.LEFT_INDEX})
-                .addProp("API_KEY", "AIzaSyAlG8ML3lOwPHiqIlte6SUnOuNGzfDFi5g")
-                .addProp("LICENSE", "com.fad.bio.poc2020-06-15 00 00 00.lic")
-                .setCloseOnError(false);
 
 
-        return builder.build();
-    }
 
-    private EnrollConfig enrollConfig(){
-      return EnrollConfig.builder()
-                .scannerType(EnrollConfig.SCANNER_TYPE_WATSON)
-                .minFingerCapture(0)
-                 .maxCaptureAttempts(3)
-                .maxValidNfiq(10)
-                .build();
 
-    }
 
-    private ResumeConfig getResumeConfig() {
-        return ResumeConfig.builder()
-                .showResult(true)
-               // .setFaceValueCompare(50)
-                .build();
-    }
-    private FaceConfig faceConfig() {
-        int[] gestures = new int[]{
-                FaceConfig.GESTURE_TURN_RIGHT,
-                FaceConfig.GESTURE_TURN_LEFT,
-                FaceConfig.GESTURE_BLINK,
-                FaceConfig.GESTURE_SMILE,
-        };
-        FaceConfig faceConfig = FaceConfig.builder()
-                .mode(FaceConfig.MODE_DYNAMIC)
-                .availableGestures(gestures) //Pasamos el arreglo con los gestos.
-                .onlyFrontCamera(true)//Camara frontal activada.
-                .onlyRearCamera(false)//Camara Trasera de deshabilitada.
-                .build();
 
-        return faceConfig;
-    }
+        mbtnFER.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig fadConfig = FadConfig.builder()
+                        .credentials(credentials)
+                        //  .addConfig(identityConfig())
+                        .addConfig(faceConfig())
+                        //.addConfig(getResumeConfig())
+                        .build();
+                FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
+                        .config(fadConfig);
 
-    private FaceConfig faceConfig2() {
-        return FaceConfig.builder()
-                .mode(FaceConfig.MODE_TIME)
-                .captureTime(4) //segundos
-                .onlyFrontCamera(true)
-                .onlyRearCamera(false)
-                .build();
-    }
 
-    private OtherDocsConfig getOtherDocConfig() {
-        Document document = new Document("Comprobante");
-        document.setName("Comprobante");
-        OtherDocsConfig.Builder builder = OtherDocsConfig.builder()
-                .addDocument(document)
-                .setOptionalMode(true)
-                .setLimitDocuments(1);
-        return builder.build();
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+            }
+        });
+
+         */
+
+        btnAut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig fadConfig = FadConfig.builder()
+                        .credentials(credentials)
+                        .addConfig(createAuthModule())
+                        .build();
+                FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
+                        .config(fadConfig);
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+            }
+        });
+
+        btnSign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig fadConfig = FadConfig.builder()
+                        .credentials(credentials)
+                        .addConfig(faceConfig())
+                        .addConfig(getSignConfig())
+                        .addConfig(getOtherDocConfig())
+                        .addConfig(getResumeConfig())
+                        .build();
+                FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
+                        .config(fadConfig);
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+            }
+        });
+
+        mbtnFace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig fadConfig = FadConfig.builder()
+                        .credentials(credentials)
+                        .addConfig(faceConfig())
+                        .build();
+                FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
+                        .config(fadConfig);
+
+
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+            }
+        });
+
+        btnAcuant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                testAcuantFace();
+            }
+        });
+
+
+        mBtnFZoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig fadConfig = FadConfig.builder()
+                        .credentials(credentials)
+                        .addConfig(getFaceZoomConfig())
+                        .build();
+                FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
+                        .config(fadConfig);
+
+
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+            }
+        });
+
+
+
+        btnIdenty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig fadConfig = FadConfig.builder()
+                        .credentials(credentials)
+                        .addConfig(identityConfig())
+                        .build();
+                FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
+                        .config(fadConfig);
+
+
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+            }
+        });
+
+
+/*
+        btnIdentyFlow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig.Builder builder = FadConfig.builder()
+                        .endpoint(StringUtils.encode("https://uat.firmaautografa.com"))
+                        .requestLocation(true)
+                        .preventScreenCapture(false)
+                        .credentials(credentials);
+
+                builder.addConfig(DefaultIdentityConfig.build());
+                //  builder.addConfig(getFaceZoomConfig());
+                //builder.addConfig(getResumeConfig());
+
+                ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_FRONT, INEProcessorTF.class);
+                ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_BACK, INEProcessorTF.class);
+
+                FadManager.IntentBuilder intentBuilder = mFadManager.newIntentBuilder()
+                        .showHeader(true)
+                        .showSubHeader(false)
+                        .config(builder.build());
+
+                Intent  intent= intentBuilder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+
+            }
+        });
+
+ */
+        btnConfi1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig fadConfig = FadConfig.builder()
+                        .credentials(credentials)
+                         .addConfig(identityConfig())
+                         .addConfig(faceConfig())
+                         .addConfig(enrollConfig())
+                         .addConfig(getResumeConfig())
+
+                        .build();
+                FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
+                        .config(fadConfig);
+
+
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+            }
+        });
+
+
+        btnFinger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig fadConfig = FadConfig.builder()
+                        .credentials(credentials)
+                        .addConfig(getFingerprintIDConfig())
+                        .build();
+                FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
+                        .config(fadConfig);
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+            }
+        });
+
+
+        btnEnroll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FadConfig fadConfig = FadConfig.builder()
+                        .credentials(credentials)
+                        .addConfig(enrollConfig())
+                        .build();
+                FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
+                        .config(fadConfig);
+
+
+                Intent intent = builder.build(getApplicationContext());
+                startActivityForResult(intent, FAD_SDK_REQUEST_CODE);
+            }
+        });
+
     }
 
     private VideoConferenceConfig getVideoConferenceConfig() {
@@ -317,6 +387,40 @@ public class MainActivity extends AppCompatActivity  {
                 .build();
     }
 
+    private EnrollConfig enrollConfig(){
+        return EnrollConfig.builder()
+                .scannerType(EnrollConfig.SCANNER_TYPE_WATSON)
+                .minFingerCapture(0)
+                .maxCaptureAttempts(3)
+                .maxValidNfiq(10)
+                .build();
+
+    }
+
+    private FaceConfig faceConfig2() {
+        return FaceConfig.builder()
+                .mode(FaceConfig.MODE_TIME)
+                .captureTime(4) //segundos
+                .onlyFrontCamera(true)
+                .onlyRearCamera(false)
+                .build();
+    }
+
+    private FaceConfig faceConfig() {
+        int[] gestures = new int[]{
+                FaceConfig.GESTURE_TURN_RIGHT,
+                FaceConfig.GESTURE_TURN_LEFT,
+                FaceConfig.GESTURE_BLINK,
+                FaceConfig.GESTURE_SMILE,
+        };
+        FaceConfig faceConfig = FaceConfig.builder()
+                .mode(FaceConfig.MODE_DYNAMIC)
+                .availableGestures(gestures) //Pasamos el arreglo con los gestos.
+                .onlyFrontCamera(true)//Camara frontal activada.
+                .onlyRearCamera(false)//Camara Trasera de deshabilitada.
+                .build();
+        return faceConfig;
+    }
 
     private FaceConfig getFaceZoomConfig(){
         return FaceConfig.builder()
@@ -326,10 +430,117 @@ public class MainActivity extends AppCompatActivity  {
                 .build();
     }
 
+
     private IdentityConfig identityConfig(){
-        Log.d("identity", "SE EJECUTO IDENTITY");
         IdentityConfig identityConfig = DefaultIdentityConfig.build();
         return  identityConfig;
+    }
+
+
+    private ResumeConfig getResumeConfig() {
+        return ResumeConfig.builder()
+                .showResult(true)
+                // .setFaceValueCompare(50)
+                .build();
+    }
+
+
+    private FingerprintIDConfig getFingerprintIDConfig() {
+
+        return FingerprintIDConfig.builder()
+                //.setTypeScanner(FingerprintIDConfig.SCANNER_TYPE_WATSON)
+                .setTypeScanner(null)
+                .setOptionOptic(true)
+                .setOptionCamera(true)
+                .addProp("API_KEY", "AIzaSyAlG8ML3lOwPHiqIlte6SUnOuNGzfDFi5g")
+                .addProp("LICENSE", "com.fad.bio.poc2020-06-15 00 00 00.lic")
+                .build();
+
+    }
+
+
+    private  AuthConfig createAuthModule() {
+        return AuthConfig.builder()
+                .setTypeScanner(AuthConfig.SCANNER_TYPE_WATSON)
+                .setAuthId("1234")
+                .setAuthName("Alexis Martínez")
+                .build();
+    }
+
+    private SignConfig getSignConfig() {
+        SignConfig.FadSource xmlSource = new AssetSource("data.xml");
+        SignConfig.FadSource pdfSource = new AssetSource("pdf.pdf");
+        return SignConfig.builder(xmlSource, pdfSource)
+                .build();
+
+    }
+    private void testAcuantFace() {
+
+        FadConfig.Builder builder = FadConfig.builder()
+                .endpoint(StringUtils.encode("https://uat.firmaautografa.com"))
+                .requestLocation(false)
+                .preventScreenCapture(false)
+                .credentials(credentials);
+
+        // ACUANT config
+        builder.addConfig(FaceConfig.builder()
+                .setType(FaceConfig.ACUANT)
+                .setProviderConfiguration(getProvideConfiguration())
+                .build());
+
+        FadManager.IntentBuilder intentBuilder = mFadManager.newIntentBuilder()
+                .showHeader(true)
+                .showSubHeader(false)
+                .config(builder.build());
+
+        startActivityForResult(intentBuilder.build(this), FAD_SDK_REQUEST_CODE);
+    }
+
+
+    private OtherDocsConfig getOtherDocConfig() {
+        Document document = new Document("Comprobante");
+        document.setName("Comprobante");
+        Document document1 = new Document("rfc");
+        document1.setName("RFC");
+        document1.setDescription("Registro Federal de Contribuyentes");
+        Document document2 = new Document("curp");
+        document2.setName("CURP");
+        OtherDocsConfig.Builder builder = OtherDocsConfig.builder()
+                .addDocument(document)
+                .addDocument(document1)
+                .addDocument(document2)
+                .setOptionalMode(true)
+                .setLimitDocuments(1);
+        return builder.build();
+    }
+
+    private AppointmentConfig getAppointmentConfig() {
+        return AppointmentConfig
+                .builder()
+                .contactEmail("amartinez@na-at.com.mx")
+                .contactFullName("Alexis Martinez")
+                .contactNumber("5522977855")
+                .build();
+    }
+
+
+    private ProviderConfiguration getProvideConfiguration() {
+        ProviderConfiguration providerConfiguration = new ProviderConfiguration();
+        //Aquant
+        providerConfiguration.setAcUserName("Acuant_Admin@BdC.com");
+        providerConfiguration.setAcPassword("J6Jqt2XbQ6^)GefD");
+        providerConfiguration.setAcSubscriptionId("ce8066aa-1196-4071-a4c3-ededff1c3f17");
+        providerConfiguration.setAcFrmEndpoint("https://frm.acuant.net");
+        providerConfiguration.setAcAssureIdEndpoint("https://services.assureid.net");
+        providerConfiguration.setAcMediscanEndpoint("https://medicscan.acuant.net");
+        providerConfiguration.setAcPassiveLivenessEndpoint("https://us.passlive.acuant.net");
+        providerConfiguration.setAcAcasEndpoint("https://acas.acuant.net");
+        providerConfiguration.setAcOzoneEndpoint("https://ozone.acuant.net");
+        //ReadId
+        providerConfiguration.setRiBaseUrl("https://saas-preprod.readid.com:443/odata/v1/ODataServlet/");
+        providerConfiguration.setRiAccessKey("096ecf43-3424-4dd1-91f7-419cdb34ebe1");
+
+        return providerConfiguration;
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -339,51 +550,6 @@ public class MainActivity extends AppCompatActivity  {
             if (data == null) return;
             aprueba(resultCode,data);
         }
-        if (requestCode == FAD_SDK_REQUEST_CODE_2) {
-            //close is forced in OrchestratorActivity
-            if (data == null) return;
-            aprueba(resultCode,data);
-        }
-        if (requestCode == FAD_SDK_REQUEST_CODE_3) {
-            //close is forced in OrchestratorActivity
-            if (data == null) return;
-            aprueba(resultCode,data);
-
-        }
-        if (requestCode == FAD_SDK_REQUEST_CODE_4) {
-            //close is forced in OrchestratorActivity
-            if (data == null) return;
-            aprueba(resultCode,data);
-
-        }
-        if (requestCode == FAD_SDK_REQUEST_CODE_5) {
-            //close is forced in OrchestratorActivity
-            if (data == null) return;
-            aprueba(resultCode,data);
-
-        }
-        if (requestCode == FAD_SDK_REQUEST_CODE_6) {
-            //close is forced in OrchestratorActivity
-            if (data == null) return;
-            aprueba(resultCode,data);
-
-        }
-
-        if (requestCode == FAD_SDK_REQUEST_CODE_7) {
-            //close is forced in OrchestratorActivity
-            if (data == null) return;
-            aprueba(resultCode,data);
-
-        }
-
-        if (requestCode == FAD_SDK_REQUEST_CODE_8) {
-            //close is forced in OrchestratorActivity
-            if (data == null) return;
-            aprueba(resultCode,data);
-
-        }
-
-
     }
 
 

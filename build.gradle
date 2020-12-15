@@ -10,7 +10,9 @@ buildscript {
     dependencies {
 //        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.android.tools.build:gradle:3.5.0'
-        classpath 'com.google.gms:google-services:4.2.0'
+        classpath 'com.google.gms:google-services:4.3.4'
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha01"
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual na_at build.gradle files
         //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
@@ -35,16 +37,98 @@ allprojects {
             }
             url 'https://repository.firmaautografa.com/artifactory/libs-release-local'
         }
+//        maven {
+//            credentials {
+//                username "$fadUser"
+//                password "$fadPassword"
+//            }
+//            url 'https://repository.firmaautografa.com/artifactory/libs-release-experimental'
+//        }
         maven { url "https://jitpack.io" }
-
+//        maven {
+//            url 'https://repository.firmaautografa.com/artifactory/libs-snapshot-local'
+//        }
         maven {
             url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
         }
         maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
 
+        maven {
+            url "https://identy.jfrog.io/identy/gradle-release-local"
+            credentials {
+                username = "naat"
+                password = "#R3lR0gugPGDcrII3G37C"
+            }
+        }
+
+        maven {
+            url "s3://maven.readid.com"
+            credentials(AwsCredentials) {
+                accessKey "AKIARPBHJEUUXQPJCDOY"
+                secretKey "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"
+            }
+        }
+
+        //Face Capture and Barcode reading. Only add if using acuantcamera or acuanthgliveness
+        maven { url 'https://maven.google.com' }
+        maven { url 'https://dl.bintray.com/acuant/Acuant' }
+        maven { url 'https://raw.githubusercontent.com/iProov/android/master/maven/' }
     }
     apply plugin: "com.jfrog.artifactory"
     apply plugin: 'maven-publish'
+}
+
+ext {
+    compileSdkVersion = 30
+
+    //android support
+    buildToolsVersion = "30.0.2"
+    androidVersion = "30.0.0"
+    constraintLayout = "2.0.0"
+
+    //navigation architecture
+    androidNavigation = "2.3.1"
+
+    //room
+    room = "1.1.1"
+
+    //google services
+    firebaseCore = "17.0.0"
+    firebaseMLKit = "20.0.0"
+    firebaseMLVisionFaceModel = "17.0.2"
+    playServicesLocation = "16.0.0"
+
+
+    //lottie
+    lottieVersion = "2.7.0"
+    //retrofit
+    retrofit2 = "2.3.0"
+    retrofit2ConverterGson = "2.1.0"
+    retrofit2RXJavaAdapter = "1.0.0"
+    okhttp3LoggingInterceptor = "3.8.0"
+
+    //safe room
+    safeRoom = "0.4.5"
+    commonsCodec = "1.11"
+
+    //rx java
+    rxAndroid = "2.1.0"
+    rxJava = "2.2.6"
+
+    //lombok
+    lombok = "1.18.6"
+
+    //jitsi
+    //jitsi = "2.2.2"
+    jitsi = "2.+"
+
+    //na-at sdk
+    fingerprintScanner = "1.3.5.6"
+    watsonScanner = "1.3.5"
+    identyScanner = "1.3.5.8"
+    documentScanner = "0.3.8.9"
+    ocr = "1.0.11.5"
+
 }
 
 

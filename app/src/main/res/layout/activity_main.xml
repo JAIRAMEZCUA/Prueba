@@ -6,12 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
+        <Button
+            android:id="@+id/btnFace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Face" />
+        <Button
+            android:id="@+id/btnFaceZoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Face-Zoom" />
+
+        <Button
+            android:id="@+id/btnIdenty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Identity" />
+
+        <Button
+            android:id="@+id/btnIdentyFlow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Identity-TF" />
+
+        <Button
+            android:id="@+id/btnAcuant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="btnAcuant" />
+
+        <Button
+            android:id="@+id/btnConfi1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Identity-Face-Resumen" />
+
+        <Button
+            android:id="@+id/btnFing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finger" />
+        <Button
+            android:id="@+id/btnDocs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Documents" />
+
         <Button
             android:id="@+id/btnappoint"
             android:layout_width="wrap_content"
@@ -33,11 +78,7 @@
             android:layout_height="wrap_content"
             android:text="Sign" />
 
-        <Button
-            android:id="@+id/btnFing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Finger" />
+
         <Button
             android:id="@+id/btnVideo"
             android:layout_width="wrap_content"
@@ -45,20 +86,10 @@
             android:text="Videoconference" />
 
         <Button
-            android:id="@+id/btnOther"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Others docs" />
-        <Button
             android:id="@+id/ZTS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Tensor" />
-        <Button
-            android:id="@+id/FIR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/face_entity_resumen" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

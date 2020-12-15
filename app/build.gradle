@@ -41,25 +41,29 @@ android {
 
 dependencies {
     //Manager
-    implementation(group: 'com.na_at.sdk', name: 'manager', version: "0.12.0_alpha_new", ext: 'aar'){
+    implementation(group: 'com.na_at.sdk', name: 'manager', version: "0.12.0_SinDagger2", ext: 'aar'){
         transitive=true
     }
     //Data
-    implementation(group: 'com.na_at.sdk', name: 'data', version: "0.12.0_alpha_new", ext: 'aar'){
+    implementation(group: 'com.na_at.sdk', name: 'data', version: "0.12.0_SinDagger2", ext: 'aar'){
         transitive=true
     }
     //Commons
-    implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_alpha_new", ext: 'aar'){
+    implementation(group: 'com.na_at.sdk', name: 'commons', version: "0.12.0_SinDagger2", ext: 'aar'){
         transitive=true
     }
     //Face
-    implementation(group: 'com.na_at.sdk', name: 'face', version: "0.12.0_alpha_new", ext: 'aar'){
+    implementation(group: 'com.na_at.sdk', name: 'face', version: "0.12.0_SinDagger2", ext: 'aar'){
         transitive=true
     }
 
+    //zoom
+    implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
+    implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0_SinDagger1", ext: 'aar')
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
     //identity
-    implementation(group: 'com.na_at.sdk', name: 'identity', version: "0.12.0_alpha_new", ext: 'aar'){
+    implementation(group: 'com.na_at.sdk', name: 'identity', version: "0.12.0_SinDagger2", ext: 'aar'){
         transitive=true
     }
     // camera widget
@@ -67,36 +71,111 @@ dependencies {
         transitive=true
     }
 
-    //resume
-    implementation(group: 'com.na_at.sdk', name: 'resume', version: "0.12.0_alpha_new", ext: 'aar'){
-        transitive=true
-    }
-
-    //zoom
-   implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
-    implementation(group: 'com.na_at.sdk', name: 'face-zoom', version: "0.12.0_alpha_new", ext: 'aar')
-
-    // tensorflow
-    implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly') { changing = true }
+    //ocr
+    implementation(group: 'com.naat', name: 'ocr.sdk', version: '1.0.11.5', ext: 'aar')
 
     //opencv
     implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar'){
         transitive=true
     }
 
-    //ocr
-    implementation(group: 'com.naat', name: 'ocr.sdk', version: '1.0.11.5', ext: 'aar')
+    //resume
+    implementation(group: 'com.na_at.sdk', name: 'resume', version: "0.12.0_SinDagger2", ext: 'aar'){
+        transitive=true
+    }
+
+    //appointment
+    implementation(group: 'com.na_at.sdk', name: 'appointments', version:  "0.12.0_SinDagger2" , ext: 'aar'){
+        transitive=true
+    }
+
+    implementation(group: 'com.na_at.sdk', name: 'other_docs', version: "0.12.0_SinDagger2"  , ext: 'aar'){
+         transitive = true
+    }
+    //Calendar
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
+
+    // (other dependencies)
+    implementation("org.jitsi.react:jitsi-meet-sdk:${rootProject.ext.jitsi}") {
+        transitive = true
+    }
+
+    //identity-tf
+   // implementation(group: 'com.na_at.sdk', name: 'identity-tf', version: "0.12.0", ext: 'aar'){
+  //      transitive(true)
+   // }
 
 
     //enroll
-    implementation(group: 'com.na_at.sdk', name: 'enroll', version: '0.12.0_alpha_new', ext: 'aar'){
+    implementation(group: 'com.na_at.sdk', name: 'enroll', version: '0.12.0_SinDagger2', ext: 'aar'){
         transitive = true
     }
 
+
+
     //sign
-    implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: '0.12.0_alpha_new', ext: 'aar'){
+    implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: '0.12.0_SinDagger2', ext: 'aar'){
         transitive = true
     }
+
+
+
+    //Auth
+    implementation(group: 'com.na_at.sdk', name: 'auth', version: '0.12.0_SinDagger2', ext: 'aar'){
+        transitive = true
+    }
+
+
+    // karalundi sdk
+    implementation 'com.android.volley:volley:1.1.0'
+    implementation(group: 'com.identy.java', name: 'app', version: '2.9.1.22', ext: 'aar')
+    implementation(group: 'com.identy.core-native', name: 'core-native', version: '2.9.2.6', ext: 'aar')
+    api ('com.google.android.gms:play-services-safetynet:16.0.0')
+    /*
+    //Acuant
+    implementation(group: 'com.na_at.sdk', name: 'identity-acuant', version: "0.12.0_SinDagger1" , ext: 'aar')
+
+    // accuant sdk
+    implementation 'com.acuant:acuantcommon:11.4.0'
+    implementation 'com.acuant:acuantcamera:11.4.0'
+    implementation 'com.acuant:acuantimagepreparation:11.4.0'
+    implementation 'com.acuant:acuantdocumentprocessing:11.4.0'
+
+    implementation 'com.acuant:acuantfacematch:11.4.2'
+    implementation 'com.acuant:acuanthgliveness:11.4.2'
+    implementation('com.acuant:acuantipliveness:11.4.2') {
+        transitive = true
+    }
+    implementation 'com.acuant:acuantfacecapture:11.4.2'
+    implementation 'com.acuant:acuantpassiveliveness:11.4.2'
+
+
+    /////////////////////////////////////////////finger
+    implementation(group: 'com.na_at.sdk', name: 'fingerprints', version: '0.12.0_SinDagger1', ext: 'aar')
+
+    // karalundi sdk
+    //no es compatible con t-f
+
+    //na-at sdk
+    implementation(group: 'com.naat', name: 'commons-fingerprint', version: rootProject.ext.fingerprintScanner, ext: 'aar')
+    implementation(group: 'com.naat', name: 'watsonmini', version: rootProject.ext.watsonScanner, ext: 'aar')
+    implementation(group: 'com.naat', name: 'karalundi', version: rootProject.ext.identyScanner, ext: 'aar')
+
+    // karalundi sdk
+    implementation 'com.android.volley:volley:1.1.0'
+    implementation(group: 'com.identy.java', name: 'app', version: '2.9.1.22', ext: 'aar')
+    implementation(group: 'com.identy.core-native', name: 'core-native', version: '2.9.2.6', ext: 'aar')
+    api ('com.google.android.gms:play-services-safetynet:16.0.0')
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+    // tensorflow
+    implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly') { changing = true }
+
 
 
     //appointment
@@ -105,18 +184,6 @@ dependencies {
     }
 
     /*
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //finger
-    implementation(group: 'com.na_at.sdk', name: 'fingerprints', version: '0.12.0_alpha_new', ext: 'aar'){
-        transitive=true
-    }
-
-    // karalundi sdk
-    //no es compatible con t-f
-    implementation(group: 'com.identy.core-native', name: 'core-native', version: '2.9.2.6', ext: 'aar')
-    api ('com.google.android.gms:play-services-safetynet:16.0.0')
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 
     implementation(group: 'com.na_at.sdk', name: 'videoconference', version: '0.12.0_alpha_new', ext: 'aar'){
@@ -124,12 +191,7 @@ dependencies {
     }
 
 
-     */
-
-
     implementation("org.jitsi.react:jitsi-meet-sdk: 2.2.2 ") { transitive = true }
-
-
 
     implementation 'com.google.android.gms:play-services-vision:16.2.0'
     //zxing
@@ -140,6 +202,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-ml-vision-face-model:17.0.2'
     api "com.google.android.gms:play-services-location:16.0.0"
 
+
+ */
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
