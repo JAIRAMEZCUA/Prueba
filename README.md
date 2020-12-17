@@ -172,6 +172,13 @@ La segunda autenticación es por medio de Token, la aplicación host es la que s
 
 ### Setup para el módulo de Face ###
 
+**Nota:** Al momento de la ejecución debemos Aceptar el permiso de Cámara.
+
+**En el Manifest configuramos las etiquetas de Metadatos.**
+
+        <meta-data android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="face" />
+
 Agregamos la dependencia en **build.gradle**:
 
 
@@ -291,6 +298,20 @@ Asignamos la configuración para uso del módulo de face-acuant
     }
 
 ### Setup para el módulo de Identity ###
+
+**Nota:** Al momento de la ejecución debemos Aceptar los permisos de INTERNET y de Cámara.
+
+**En el Manifest configuramos las etiquetas de Metadatos.**
+
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="ocr, barcode"
+            tools:replace="android:value"/>
+
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="ocr, barcode"
+            tools:replace="android:value"/>
 
 **Nota : ocupamos las dependencias de OCR y openCV.**
 
