@@ -9,7 +9,7 @@ Este software es de NA-AT technologies
 
 ----------
 
-## Introduction ##
+## Introducción ##
 
 Este documento provee la información detallada sobre las dependencias necesarias para el funcionamiento de los modulos de FAD DE ANDROID SDK.
 
@@ -17,7 +17,7 @@ Este documento provee la información detallada sobre las dependencias necesaria
 ----------
 
 
-## Modules ##
+## Módulos ##
 
 El SDK incluye los siguientes modulos:
 
@@ -172,7 +172,7 @@ La segunda autenticación es por medio de Token, la aplicación host es la que s
 
 ### Setup para el módulo de Face ###
 
-**Nota:** Al momento de la ejecución debemos Aceptar el permiso de Cámara.
+**Nota:** Al momento de la ejecución debemos Aceptar el permiso de **Cámara**.
 
 **En el Manifest configuramos las etiquetas de Metadatos.**
 
@@ -222,6 +222,7 @@ Mostraremos el fragmento de configuración para el modo de tiempo:
 
 
 ### Setup para el módulo de Face-Zoom ###
+
 **Nota para ocupar este modulo se necesita tener implementado la dependencia de Face.**
 
  Agregamos la dependencia en **build.gradle**:
@@ -300,7 +301,7 @@ Asignamos la configuración para uso del módulo de face-acuant
 
 ### Setup para el módulo de Identity ###
 
-**Nota:** Al momento de la ejecución debemos Aceptar los permisos de INTERNET y de Cámara.
+**Nota:** Al momento de la ejecución debemos Aceptar los permisos de **INTERNET** y **Cámara**.
 
 **En el Manifest configuramos las etiquetas de Metadatos.**
 
@@ -579,7 +580,7 @@ Mostraremos el fragmento de código para el modulo de Firma.
 
 ### Setup para el módulo de Videoconference ###
 
-**Nota:** Al momento de la ejecución debemos Aceptar los permisos de Alarma y de Comprobación de Internet.
+**Nota:** Al momento de la ejecución debemos Aceptar los permisos de **Alarma** y  **Comprobación de Internet**.
 
 Agregamos la dependencia en **build.gradle**:
 
@@ -651,7 +652,7 @@ Mostraremos el fragmento de código para el modulo de Document.
 
 ### Setup para el módulo de Appointments ###
 
-**Nota:** Al momento de la ejecución debemos Aceptar los permisos de Alarma y de Comprobación de Internet.
+**Nota:** Al momento de la ejecución debemos Aceptar los permisos de **Alarma** y **Comprobación de Internet**.
 
 
 Agregamos la dependencia en **build.gradle**:
@@ -686,7 +687,7 @@ Mostraremos el fragmento de código para el modulo de Appointment.
     }
 
 
-**Note** Es necesario declarar  la parte de transitive = true , debido a que los artefactos contienen dependencias embebidas.
+**Nota** Es necesario declarar  la parte de transitive = true , debido a que los artefactos contienen dependencias embebidas.
 
 
 **NA-AT technologies**  **Campeche, Segundo Piso 300, Hipódromo Condesa, Cuauhtémoc, 06100 Cuauhtemoc, CDMX**
