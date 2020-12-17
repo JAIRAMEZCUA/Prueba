@@ -231,6 +231,7 @@ Mostraremos el fragmento de configuración para el modo de tiempo:
                   implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
                   implementation(group: 'com.na_at.sdk', name: 'face-zoom', version:  $version, ext: 'aar')
              }
+
 Mostraremos el fragmento de código para el modulo de face-zoom.
 
     private FaceConfig getFaceZoomConfig(){
@@ -347,6 +348,7 @@ Mostraremos el fragmento de código para el modulo de identity
 2.  Necesita estar registrada la App en nuestro Backend para que pueda hacer uso de este modulo.
 3.  Para el módulo identity-tf es obligatorio tener el xml y el txt como entradas: las fuentes de entrada pueden ser un AsseetSource, FileSource y URLSource.
 
+
 **Nota : Implementamos el modulo de camera Widget**
 
 Agregamos la dependencia en **build.gradle**:
@@ -432,6 +434,8 @@ Mostraremos el fragmento de código para el modulo de Identity-Aqua
 
 
 ### Setup para el módulo de Resume ###
+
+**Nota:** Al momento de la ejecución debemos Aceptar el permiso de Localización .
 
 Agregamos la dependencia en **build.gradle**:
 
@@ -575,6 +579,8 @@ Mostraremos el fragmento de código para el modulo de Firma.
 
 ### Setup para el módulo de Videoconference ###
 
+**Nota:** Al momento de la ejecución debemos Aceptar los permisos de Alarma y de Comprobación de Internet.
+
 Agregamos la dependencia en **build.gradle**:
 
    **Módulo Videoconference:**
@@ -644,6 +650,9 @@ Mostraremos el fragmento de código para el modulo de Document.
 
 
 ### Setup para el módulo de Appointments ###
+
+**Nota:** Al momento de la ejecución debemos Aceptar los permisos de Alarma y de Comprobación de Internet.
+
 
 Agregamos la dependencia en **build.gradle**:
 
