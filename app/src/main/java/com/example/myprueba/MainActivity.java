@@ -44,13 +44,8 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity  {
 
     private static final int FAD_SDK_REQUEST_CODE = 1234;
-
-
-
     private FadManager mFadManager;
 
-
-    private File file;
     FadCredentials credentials;
 
     Button mbtnZTS;
@@ -280,6 +275,9 @@ public class MainActivity extends AppCompatActivity  {
                 FadConfig fadConfig = FadConfig.builder()
                         .credentials(credentials)
                         .addConfig(identityConfig())
+                        .addConfig(faceConfig())
+                        .addConfig(enrollConfig())
+                        .addConfig(getResumeConfig())
                         .build();
                 FadManager.IntentBuilder builder = mFadManager.newIntentBuilder()
                         .config(fadConfig);

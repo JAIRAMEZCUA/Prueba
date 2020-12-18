@@ -23,9 +23,9 @@ El SDK incluye los siguientes modulos:
 
 **Módulo ID :**
 
-- Se encarga  de la captura de identificaciones siguiendo las especificaciones que marca la Circular Única Bancaria (INE / IFE, Pasaporte, si no se cuenta con alguna de ellas,se deben capturar dos identificaciones adicionales).
+- Módulo para capturas de Identificaciones (INE/IFE).
 
-**Módulo Documentos :**
+**Módulo Captura de otros documentos :**
 
 - Permite la captura de cualquier documento así como el recorte del mismo para su clasificación y extracción de información (OCR).
 
@@ -42,6 +42,7 @@ El SDK incluye los siguientes modulos:
 - Realiza la captura de ausencias (impedimentos) y/o huellas necesarias para enrolamiento con un motor biométrico en el back end, el módulo  hace uso de una interfaz que permite la captura con dispositivos físicos.
 
 **Módulo Firma:**
+
 - Se utiliza para capturar la firma digital del usuario mediante autenticación del mismo y prueba de vida.
 
 
@@ -114,7 +115,8 @@ El SDK incluye los siguientes modulos:
 
 **Nota:** Todos los modulos necesitan implementar los modulos de **Commons,Data y Manager**, por lo cual agregamos sus  dependencias en el **build.gradle**:
 
-      ** Módulo Manager: **
+   ** Módulo Manager: **
+
       dependencies {
             //Manager
             implementation(group: 'com.na_at.sdk', name: 'manager', version:  $version, ext: 'aar'){
@@ -122,14 +124,16 @@ El SDK incluye los siguientes modulos:
             }
       }
 
-      **Módulo Data:**
+   **Módulo Data:**
+
       dependencies {
             //Data
             implementation(group: 'com.na_at.sdk', name: 'data', version:  $version, ext: 'aar'){
                     transitive=true
             }
       }
-      **Módulo Commons:**
+   **Módulo Commons:**
+
       dependencies {
              //Commons
              implementation(group: 'com.na_at.sdk', name: 'commons', version:  $version, ext: 'aar'){
@@ -341,7 +345,7 @@ Mostraremos el fragmento de código para el modulo de identity
         return DefaultIdentityConfig.build();
     }
 
-### Setup para el módulo de Identity-tensor flow ###
+### Setup para el módulo de Identity-tensorflow ###
 
 **Requisitos :**
 
@@ -462,7 +466,7 @@ Mostraremos el fragmento de código para el modulo de Resume.
 
 ### Setup para el módulo de Fingerprints ###
 
-**Nota : este módulo no es compatible con t-f.**
+**Nota : Este módulo no es compatible con el módulo de captura de ID con tensorflow.**
 
 Agregamos la dependencia en **build.gradle**:
 
@@ -505,12 +509,12 @@ Agregamos la dependencia en **build.gradle**:
 
     **Módulo Enrolamiento :**
 
-    dependencies {
-    //enroll
-       implementation(group: 'com.na_at.sdk', name: 'enroll', version:  $version , ext: 'aar'){
-           transitive = true
-       }
-    }
+        dependencies {
+        //enroll
+           implementation(group: 'com.na_at.sdk', name: 'enroll', version:  $version , ext: 'aar'){
+               transitive = true
+           }
+        }
 
 
 Mostraremos el fragmento de código para el modulo de Enrolamiento.
@@ -543,15 +547,15 @@ Agregamos la dependencia en **build.gradle**:
 
    **Módulo Firma:**
 
-    dependencies {
+        dependencies {
 
-            //sign
-            implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: $version, ext: 'aar'){
-                transitive = true
-            }
-            //opencv
-            implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar')
-    }
+                //sign
+                implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: $version, ext: 'aar'){
+                    transitive = true
+                }
+                //opencv
+                implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar')
+        }
 Mostraremos el fragmento de código para el modulo de Firma.
 
     private SignConfig getSignConfig() {
