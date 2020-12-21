@@ -64,6 +64,7 @@ El SDK incluye los siguientes modulos:
 
 **Colocamos los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK.**
 
+**Nota** Algunos módulos necesitarán agregar nuevas dependencias en el **Build.gradle**.
 
         // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
@@ -92,9 +93,14 @@ El SDK incluye los siguientes modulos:
                     url "https://s3.amazonaws.com/repo.commonsware.com"
                 }
                 maven {
+                     credentials {
+                       username "USER"
+                       password "PASSWORD"
+                     }
                     //Necesaria para descargar los artefactos de las dependencias del SDK.
                     url 'https://repository.firmaautografa.com/artifactory/libs-release-local'
                 }
+                maven { url "https://jitpack.io" }
             }
         }
 
@@ -146,8 +152,8 @@ Cuando se inicializa el manager por primera vez se tiene que autenticar con el s
 
      //objeto de credenciales (oAuth2)
         FadCredentials credentials = FadCredentials.builder()
-                .client("fad")
-                .secret("fadsecret")
+                .client(BuildConfig.CLIENT)
+                .secret(BuildConfig.SECRET)
                 .username(BuildConfig.USERNAME)
                 .password(BuildConfig.PASSWORD)
                 .build();
@@ -168,16 +174,17 @@ La segunda autenticación es por medio de Token, la aplicación host es la que s
 
 **En el Manifest de Android configuramos las etiquetas de Metadatos.**
 
+    <application>
         <meta-data android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="face" />
+    </application>
 
 Agregamos la dependencia en **build.gradle**:
 
-
         dependencies {
-                    implementation(group: 'com.na_at.sdk', name: 'face', version:  $version, ext: 'aar'){
-                        transitive=true
-                    }
+             implementation(group: 'com.na_at.sdk', name: 'face', version:  $version, ext: 'aar'){
+                  transitive=true
+             }
         }
 
 
@@ -235,12 +242,25 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
     }
 ### Setup para el módulo de Face-Acuant ###
 
+**Se necesitan agregar las siguientes dependencias en el Build.gradle**
+
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+
+            //Face Capture and Barcode reading. Only add if using acuantcamera or acuanthgliveness
+            maven { url 'https://maven.google.com' }
+            maven { url 'https://dl.bintray.com/acuant/Acuant' }
+            maven { url 'https://raw.githubusercontent.com/iProov/android/master/maven/' }
+        }
+    }
+
 **Nota para ocupar este modulo se necesita tener implementado la dependencia de Face.**
 
  Agregamos la dependencia en **build.gradle**:
 
       dependencies {
-          //face-acuant
           implementation(group: 'com.na_at.sdk', name: 'face-acuant', version: $version, ext: 'aar'){
                 transitive=true
           }
@@ -296,15 +316,38 @@ Asignamos la configuración para uso del módulo de face-acuant
 
 **En el Manifest configuramos las etiquetas de Metadatos.**
 
-        <meta-data
-            android:name="com.google.android.gms.vision.DEPENDENCIES"
-            android:value="ocr, barcode"
-            tools:replace="android:value"/>
+    <application>
+            <meta-data
+                android:name="com.google.android.gms.vision.DEPENDENCIES"
+                android:value="ocr, barcode"
+                tools:replace="android:value"/>
 
-        <meta-data
-            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
-            android:value="ocr, barcode"
-            tools:replace="android:value"/>
+            <meta-data
+                android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+                android:value="ocr, barcode"
+                tools:replace="android:value"/>
+
+    </application>
+
+
+
+
+**Se necesitan agregar las siguientes dependencias en el Build.gradle**
+
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+
+            maven {
+                url "https://identy.jfrog.io/identy/gradle-release-local"
+                credentials {
+                    username = "USER"
+                    password = "PASSWORD"
+                }
+            }
+        }
+    }
 
 **Nota : ocupamos las dependencias de OCR y openCV.**
 
@@ -389,6 +432,20 @@ Mostraremos el fragmento de código para el modulo de Identity-tensor flow.
 
 ### Setup para el módulo de Identity-Acuant ###
 
+**Se necesitan agregar las siguientes dependencias en el Build.gradle**
+
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+
+            //Face Capture and Barcode reading. Only add if using acuantcamera or acuanthgliveness
+            maven { url 'https://maven.google.com' }
+            maven { url 'https://dl.bintray.com/acuant/Acuant' }
+            maven { url 'https://raw.githubusercontent.com/iProov/android/master/maven/' }
+        }
+    }
+
 Agregamos la dependencia en **build.gradle**:
 
        dependencies {
@@ -425,6 +482,25 @@ Mostraremos el fragmento de código para el modulo de Identity-Aqua
     }
 
 
+### Setup para el módulo de Identity-read-id ###
+
+**Se necesitan agregar las siguientes dependencias en el Build.gradle**
+
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+            maven {
+                url "s3://maven.readid.com"
+                credentials(AwsCredentials) {
+                    accessKey "$KEY"
+                    secretKey "$SECRET"
+                }
+            }
+        }
+    }
+
+
 ### Setup para el módulo de Resume ###
 
 **Nota:** Al momento de la ejecución de este módulo se debe aceptar el permiso de Localización .
@@ -444,8 +520,10 @@ Mostraremos el fragmento de código para el modulo de Resume.
 
     private ResumeConfig getResumeConfig() {
         return ResumeConfig.builder()
-                .showResult(true)
-               // .setFaceValueCompare(50)  --> El resume compara los rostros entre el modulo de identity y face tengan una semejanza 50%
+                .showResult(boolean) //configuración para cargar la información y enviarla al servidor
+                .setShowInfo(boolean) //muestra la información obtenida.
+                .setOverwrite(boolean) //Sobre escritura de datos
+                .setFaceValueCompare(%dereconocimiento)  --> El resume compara los rostros entre el modulo de identity y face.
                 .build();
     }
 
@@ -533,14 +611,14 @@ Agregamos la dependencia en **build.gradle**:
    **Módulo Firma:**
 
         dependencies {
-
                 //sign
                 implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: $version, ext: 'aar'){
                     transitive = true
                 }
                 //opencv
-                implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar')
+                implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: $openCV_Version, ext: 'aar')
         }
+
 Mostraremos el fragmento de código para el modulo de Firma.
 
     private SignConfig getSignConfig() {
@@ -570,6 +648,20 @@ Mostraremos el fragmento de código para el modulo de Firma.
 ### Setup para el módulo de Videoconference ###
 
 **Nota:** Al momento de la ejecución debemos Aceptar los permisos de **Alarma** y  **Comprobación de Internet**.
+
+
+**Se necesitan agregar las siguientes dependencias en el Build.gradle**
+
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+
+            maven {
+                url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+            }
+        }
+    }
 
 Agregamos la dependencia en **build.gradle**:
 
@@ -611,8 +703,8 @@ Agregamos la dependencia en **build.gradle**:
                      transitive = true
                  }
 
-                 implementation(group: 'com.naat', name: 'camerawidget', version: "3.0.0", ext: 'aar')
-                 implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar')
+                 implementation(group: 'com.naat', name: 'camerawidget', version: $version_camera, ext: 'aar')
+                 implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: $version_openCV, ext: 'aar')
 
           }
 
@@ -641,6 +733,19 @@ Mostraremos el fragmento de código para el modulo de Document.
 ### Setup para el módulo de Appointments ###
 
 **Nota:** Al momento de la ejecución debemos Aceptar los permisos de **Alarma** y **Comprobación de Internet**.
+
+**Se necesitan agregar las siguientes dependencias en el Build.gradle**
+
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+
+            maven {
+                url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+            }
+        }
+    }
 
 
 Agregamos la dependencia en **build.gradle**:
