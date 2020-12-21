@@ -109,7 +109,6 @@ El SDK incluye los siguientes modulos:
    **Módulo Manager:**
 
       dependencies {
-            //Manager
             implementation(group: 'com.na_at.sdk', name: 'manager', version:  $version, ext: 'aar'){
                 transitive=true
             }
@@ -118,7 +117,6 @@ El SDK incluye los siguientes modulos:
    **Módulo Data:**
 
       dependencies {
-            //Data
             implementation(group: 'com.na_at.sdk', name: 'data', version:  $version, ext: 'aar'){
                     transitive=true
             }
@@ -126,7 +124,6 @@ El SDK incluye los siguientes modulos:
    **Módulo Commons:**
 
       dependencies {
-             //Commons
              implementation(group: 'com.na_at.sdk', name: 'commons', version:  $version, ext: 'aar'){
                        transitive=true
              }
