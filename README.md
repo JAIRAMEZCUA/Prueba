@@ -65,52 +65,43 @@ El SDK incluye los siguientes modulos:
 **Colocamos los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK.**
 
 
-     allprojects {
-        repositories {
-            google()
-            jcenter()
-            maven {
-                url "https://s3.amazonaws.com/repo.commonsware.com"
-            }
-            maven {
-                credentials {
-                    username "$fadUser"
-                    password "$fadPassword"
-                }
-                url 'https://repository.firmaautografa.com/artifactory/libs-release-local'
-            }
+        // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-            maven { url "https://jitpack.io" }
+        buildscript {
 
-            maven {
-                url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+            repositories {
+                google()
+                jcenter()
+                mavenCentral()
             }
-            maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
-
-            maven {
-                url "https://identy.jfrog.io/identy/gradle-release-local"
-               credentials {
-                         username "$fadUser"
-                          password "$fadPassword"
-               }
+            dependencies {
+                classpath 'com.android.tools.build:gradle:3.5.0'
+                classpath 'com.google.gms:google-services:4.3.4'
+                // NOTE: Do not place your application dependencies here; they belong
+                // in the individual na_at build.gradle files
             }
-
-            maven {
-                url "s3://maven.readid.com"
-                  credentials {
-                             username "$fadUser"
-                             password "$fadPassword"
-                    }
-            }
-
-            //Face Capture and Barcode reading. Only add if using acuantcamera or acuanthgliveness
-            maven { url 'https://maven.google.com' }
-            maven { url 'https://dl.bintray.com/acuant/Acuant' }
-            maven { url 'https://raw.githubusercontent.com/iProov/android/master/maven/' }
         }
-        apply plugin: "com.jfrog.artifactory"
-        apply plugin: 'maven-publish'
-     }
+
+        allprojects {
+
+            repositories {
+                google()
+                jcenter()
+                maven {
+                    //Necesario para  trabajar con una edición de SQLite.
+                    url "https://s3.amazonaws.com/repo.commonsware.com"
+                }
+                maven {
+                    //Necesaria para descargar los artefactos de las dependencias.
+                    url 'https://repository.firmaautografa.com/artifactory/libs-release-local'
+                }
+            }
+        }
+
+
+        task clean(type: Delete) {
+            delete rootProject.buildDir
+        }
 
 
 **Nota:** Todos los modulos necesitan implementar los modulos de **Commons,Data y Manager**, por lo cual agregamos sus  dependencias en el **build.gradle**:
