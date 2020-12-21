@@ -60,9 +60,9 @@ El SDK incluye los siguientes modulos:
 
         $version = "12.0.0"
 
-**Importante : Necesitamos que la app debe estar registrada  en la plataforma de Firebase  por lo cual necesitamos agregar a la App el archivo de  “google-services.json”.**
+**Importante: Se recomienda que la app este registrada en la plataforma de Firebase  por lo cual necesitamos agregar a la App el archivo de  “google-services.json”.**
 
-**Colocamos los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK.**
+**Se coloca los repositorios necesarios para la descarga de las implementaciones de dependencias para el SDK.**
 
 **Nota** Algunos módulos necesitarán agregar nuevas dependencias en el **Build.gradle**.
 
@@ -120,14 +120,14 @@ El SDK incluye los siguientes modulos:
 
       dependencies {
             implementation(group: 'com.na_at.sdk', name: 'data', version:  $version, ext: 'aar'){
-                    transitive=true
+                transitive=true
             }
       }
    **Módulo Commons:**
 
       dependencies {
              implementation(group: 'com.na_at.sdk', name: 'commons', version:  $version, ext: 'aar'){
-                       transitive=true
+                 transitive=true
              }
       }
 
@@ -181,7 +181,6 @@ Agregamos la dependencia en **build.gradle**:
                   transitive=true
              }
         }
-
 
 Mostraremos el fragmento de configuración para el modo dinamico:
 
@@ -399,7 +398,6 @@ Agregamos la dependencia en **build.gradle**:
 
 
 Mostraremos el fragmento de código para el modulo de Identity-tensor flow.
-
 
      private void testIdentity() {
 
