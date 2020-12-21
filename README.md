@@ -237,7 +237,7 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
         return FaceConfig.builder()
                 .setType(FaceConfig.ZOOM) //declarando que el modulo de face ocupara el Zoom.
                 .addProperty(FaceConfig.ZOOM_API_KEY, API_KEY_ZOOM) //La clave necesita ser solicitada desde [https://www.facetec.com/]
-               //.setSimilarityPercent(50) //Se compara con el modulo de identity previamente ejecutado para comparar rostros.
+                .setSimilarityPercent(%dereconocimiento) //Se compara con el modulo de identity previamente ejecutado para comparar rostros.
                 .build();
     }
 ### Setup para el módulo de Face-Acuant ###
@@ -689,7 +689,7 @@ Mostraremos el fragmento de código para el modulo de Videoconference.
                 .build();
     }
 
-### Setup para el módulo de Document ###
+### Setup para el módulo de  captura de otros documentos ###
 
 **Requisitos , necesitamos tener implementado el modulo de CameraWidget y OpenCV.**
 
@@ -709,7 +709,7 @@ Agregamos la dependencia en **build.gradle**:
           }
 
 
-Mostraremos el fragmento de código para el modulo de Document.
+Mostraremos el fragmento de código para el modulo de captura de otros documentos.
 
     private OtherDocsConfig getOtherDocConfig() {
         Document document = new Document("Comprobante");
