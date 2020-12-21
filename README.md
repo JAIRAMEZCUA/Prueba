@@ -77,7 +77,6 @@ El SDK incluye los siguientes modulos:
             }
             dependencies {
                 classpath 'com.android.tools.build:gradle:3.5.0'
-                classpath 'com.google.gms:google-services:4.3.4'
                 // NOTE: Do not place your application dependencies here; they belong
                 // in the individual na_at build.gradle files
             }
@@ -100,15 +99,12 @@ El SDK incluye los siguientes modulos:
                     //Necesaria para descargar los artefactos de las dependencias del SDK.
                     url 'https://repository.firmaautografa.com/artifactory/libs-release-local'
                 }
-                maven { url "https://jitpack.io" }
             }
         }
-
 
         task clean(type: Delete) {
             delete rootProject.buildDir
         }
-
 
 **Nota:** Todos los modulos necesitan implementar los modulos de **Commons,Data y Manager**, por lo cual agregamos sus  dependencias en el **build.gradle**:
 
@@ -159,7 +155,6 @@ Cuando se inicializa el manager por primera vez se tiene que autenticar con el s
                 .build();
 
 La segunda autenticación es por medio de Token, la aplicación host es la que se autentica
-
 
         //credentials
         FadCredentials credentials = FadCredentials.builder()
@@ -225,11 +220,11 @@ Mostraremos el fragmento de configuración para el modo de tiempo:
 
  Agregamos la dependencia en **build.gradle**:
 
-             dependencies {
-                  //zoom
-                  implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
-                  implementation(group: 'com.na_at.sdk', name: 'face-zoom', version:  $version, ext: 'aar')
-             }
+      dependencies {
+            //zoom
+           implementation(group: 'com.facetec.zoom', name: 'zoom-authentication', version: '8.2.0', ext: 'aar')
+           implementation(group: 'com.na_at.sdk', name: 'face-zoom', version:  $version, ext: 'aar')
+      }
 
 Mostraremos el fragmento de código para el modulo de face-zoom.
 
@@ -656,10 +651,9 @@ Mostraremos el fragmento de código para el modulo de Firma.
         repositories {
             google()
             jcenter()
-
-            maven {
-                url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
-            }
+            maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
+            maven { url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"}
+            maven { url "https://jitpack.io" }
         }
     }
 
@@ -740,10 +734,9 @@ Mostraremos el fragmento de código para el modulo de captura de otros documento
         repositories {
             google()
             jcenter()
-
-            maven {
-                url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
-            }
+            maven { url 'http://raw.github.com/saki4510t/libcommon/master/repository/' }
+            maven { url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"}
+            maven { url "https://jitpack.io" }
         }
     }
 
