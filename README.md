@@ -439,6 +439,7 @@ Mostraremos el fragmento de código para el modulo de Identity-tensor flow.
         }
     }
 
+
 Agregamos la dependencia en **build.gradle**:
 
        dependencies {
@@ -491,6 +492,37 @@ Mostraremos el fragmento de código para el modulo de Identity-Aqua
                 }
             }
         }
+    }
+
+Mostraremos el fragmento de código para el modulo de Identity-read-id.
+
+    private void testAssureID() {
+        FadCredentials credentials = FadCredentials.builder()
+                .client(CLIENT)
+                .secret(SECRET)
+                .username(BuildConfig.USERNAME)
+                .password(BuildConfig.PASSWORD)
+                .build();
+
+        FadConfig.Builder builder = FadConfig.builder()
+                .endpoint(StringUtils.encode(BuildConfig.ENDPOINT))
+                .requestLocation(false)
+                .preventScreenCapture(false)
+                .credentials(credentials)
+                .setOnlineProcess(true);
+
+        // default identity config
+        builder.addConfig(DefaultIdentityConfig.build());
+
+        ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_FRONT, INEProcessor.class);
+        ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_BACK, INEProcessor.class);
+
+        FadManager.IntentBuilder intentBuilder = fadManager.newIntentBuilder()
+                .showHeader(true)
+                .showSubHeader(false)
+                .config(builder.build());
+
+        startActivityForResult(intentBuilder.build(this), FAD_SDK_REQUEST);
     }
 
 
