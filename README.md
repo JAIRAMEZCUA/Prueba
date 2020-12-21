@@ -425,6 +425,8 @@ Mostraremos el fragmento de código para el modulo de Identity-tensor flow.
 
 ### Setup para el módulo de Identity-Acuant ###
 
+**Nota : Para ocupar este modulo se necesita tener implementado la dependencia de Identity.**
+
 **Se necesitan agregar las siguientes dependencias en el Build.gradle**
 
     allprojects {
@@ -477,6 +479,8 @@ Mostraremos el fragmento de código para el modulo de Identity-Aqua
 
 
 ### Setup para el módulo de Identity-read-id ###
+
+**Nota : Para ocupar este modulo se necesita tener implementado la dependencia de Identity.**
 
 **Se necesitan agregar las siguientes dependencias en el Build.gradle**
 
