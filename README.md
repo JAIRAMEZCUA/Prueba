@@ -500,7 +500,7 @@ Mostraremos el fragmento de código para el modulo de Identity-Aqua
 
 Agregamos la dependencia en **build.gradle**:
 
-    **Módulo Resume :**
+ **Módulo Resume :**
 
          dependencies {
              implementation(group: 'com.na_at.sdk', name: 'resume', version:  $version, ext: 'aar'){
@@ -527,7 +527,7 @@ Mostraremos el fragmento de código para el modulo de Resume.
 
 Agregamos la dependencia en **build.gradle**:
 
-   **Módulo Fingerprints:**
+ **Módulo Fingerprints:**
 
          dependencies {
                //finger
@@ -564,7 +564,7 @@ Mostraremos el fragmento de código para el modulo de Fingerprints.
 
 Agregamos la dependencia en **build.gradle**:
 
-    **Módulo Enrolamiento :**
+  **Módulo Enrolamiento :**
 
         dependencies {
            implementation(group: 'com.na_at.sdk', name: 'enroll', version:  $version , ext: 'aar'){
@@ -604,7 +604,6 @@ Agregamos la dependencia en **build.gradle**:
    **Módulo Firma:**
 
         dependencies {
-                //sign
                 implementation(group: 'com.na_at.sdk.embedded', name: 'sign', version: $version, ext: 'aar'){
                     transitive = true
                 }
@@ -657,7 +656,7 @@ Mostraremos el fragmento de código para el modulo de Firma.
 
 Agregamos la dependencia en **build.gradle**:
 
-   **Módulo Videoconference:**
+  **Módulo Videoconference:**
 
           dependencies {
                  implementation(group: 'com.na_at.sdk', name: 'videoconference', version: $version, ext: 'aar'){
@@ -741,7 +740,7 @@ Mostraremos el fragmento de código para el modulo de captura de otros documento
 
 Agregamos la dependencia en **build.gradle**:
 
-        **Módulo Appointments:**
+     **Módulo Appointments:**
 
             dependencies {
                 //appointment
