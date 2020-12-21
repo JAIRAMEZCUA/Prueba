@@ -4,7 +4,7 @@
 Guia para la implementación de dependencias de FAD
 ----------
 
-## License
+## Licencia ##
 Este software es de NA-AT technologies
 
 ----------
@@ -27,7 +27,7 @@ El SDK incluye los siguientes modulos:
 
 **Módulo Captura de otros documentos :**
 
-- Permite la captura de cualquier documento así como el recorte del mismo para su clasificación y extracción de información (OCR).
+- Módulo para captura de otros documentos .
 
 **Módulo Selfie :**
 
@@ -92,7 +92,7 @@ El SDK incluye los siguientes modulos:
                     url "https://s3.amazonaws.com/repo.commonsware.com"
                 }
                 maven {
-                    //Necesaria para descargar los artefactos de las dependencias.
+                    //Necesaria para descargar los artefactos de las dependencias del SDK.
                     url 'https://repository.firmaautografa.com/artifactory/libs-release-local'
                 }
             }
@@ -164,9 +164,9 @@ La segunda autenticación es por medio de Token, la aplicación host es la que s
 
 ### Setup para el módulo de Face ###
 
-**Nota:** Al momento de la ejecución debemos Aceptar el permiso de **Cámara**.
+**Nota:** Al momento de la ejecución de este módulo se debe aceptar el permiso de **Cámara**.
 
-**En el Manifest configuramos las etiquetas de Metadatos.**
+**En el Manifest de Android configuramos las etiquetas de Metadatos.**
 
         <meta-data android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="face" />
@@ -175,7 +175,6 @@ Agregamos la dependencia en **build.gradle**:
 
 
         dependencies {
-                    //Face
                     implementation(group: 'com.na_at.sdk', name: 'face', version:  $version, ext: 'aar'){
                         transitive=true
                     }
@@ -242,7 +241,7 @@ Mostraremos el fragmento de código para el modulo de face-zoom.
 
       dependencies {
           //face-acuant
-          implementation(group: 'com.na_at.sdk', name: 'face-acuant', version: '0.12.0', ext: 'aar'){
+          implementation(group: 'com.na_at.sdk', name: 'face-acuant', version: $version, ext: 'aar'){
                 transitive=true
           }
       }
@@ -293,7 +292,7 @@ Asignamos la configuración para uso del módulo de face-acuant
 
 ### Setup para el módulo de Identity ###
 
-**Nota:** Al momento de la ejecución debemos Aceptar los permisos de **INTERNET** y **Cámara**.
+**Nota:** Al momento de la ejecución de este módulo se debe aceptar los permisos de **Internet** y **Cámara**.
 
 **En el Manifest configuramos las etiquetas de Metadatos.**
 
@@ -321,7 +320,7 @@ Agregamos la dependencia en **build.gradle**:
        implementation(group: 'com.naat', name: 'ocr.sdk', version: $ocr_version, ext: 'aar')
 
         //opencv
-        implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: '4.1.2', ext: 'aar')
+        implementation (group: 'com.na_at.opencv', name: 'openCVLibrary412', version: $openCV_version, ext: 'aar')
 
      }
 
@@ -375,13 +374,13 @@ Mostraremos el fragmento de código para el modulo de Identity-tensor flow.
             // default identity config
             builder.addConfig(DefaultIdentityConfig.build());
 
-            //con las siguientes lineas indicamos que el reconocimiento de la INE será por medio de tensor-flow
+            //Las siguientes lineas serán para el reconocimiento de la INE será por medio de tensor-flow
             ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_FRONT, INEProcessorTF.class);
             ImageProcessorFactory.getInstance().register(ImageProcessor.CAPTURE_INE_BACK, INEProcessorTF.class);
 
             FadManager.IntentBuilder intentBuilder = fadManager.newIntentBuilder()
-                    .showHeader(true)
-                    .showSubHeader(false)
+                    .showHeader(boolean)
+                    .showSubHeader(bolean)
                     .config(builder.build());
 
             startActivityForResult(intentBuilder.build(this), FAD_SDK_REQUEST);
@@ -404,38 +403,37 @@ Mostraremos el fragmento de código para el modulo de Identity-Aqua
 
     private IdentityConfig getAcuantIdentityConfig() {
             Option dynamicOption = Option.builder()
-                    .setLabel("Dynamic")
-                    .withDocuments(1, new GenericId(getProvideConfiguration()))
+                    .setLabel()
+                    .withDocuments()
                     .build();
 
             // default identity condition
             Condition mainCondition = Condition.builder()
-                    .setStatement("¿Con cuál documento <b>se identifica el cliente</b>?")
-                    .setIcon(com.na_at.sdk.commons.R.drawable.ic_ine_condition)
-                    .withOption(dynamicOption)
+                    .setStatement()
+                    .setIcon()
+                    .withOption()
                     .build();
 
             return IdentityConfig.builder()
                     .setMainCondition(mainCondition)
-                    .setShowIsValidity(false)
-                    .setShowSecurityFeatures(false)
-                    .setValidityINE(false)
-                    .setShowDialogConfirm(false)
-                    .setOcrProvider(IdentityConfig.OCR_PROVIDER_ACUANT)
+                    .setShowIsValidity(bolean)
+                    .setShowSecurityFeatures(bolean)
+                    .setValidityINE(bolean)
+                    .setShowDialogConfirm(bolean)
+                    .setOcrProvider(IdentityConfig.OCR_PROVIDER_ACUANT)//declaramos que el OCR sea vía ACUANT.
                     .build();
     }
 
 
 ### Setup para el módulo de Resume ###
 
-**Nota:** Al momento de la ejecución debemos Aceptar el permiso de Localización .
+**Nota:** Al momento de la ejecución de este módulo se debe aceptar el permiso de Localización .
 
 Agregamos la dependencia en **build.gradle**:
 
     **Módulo Resume :**
 
          dependencies {
-             //resume
              implementation(group: 'com.na_at.sdk', name: 'resume', version:  $version, ext: 'aar'){
                 transitive=true
              }
@@ -476,16 +474,16 @@ Mostraremos el fragmento de código para el modulo de Fingerprints.
 
        private FingerprintIDConfig getFingerprintIDConfig() {
             FingerprintIDConfig.Builder builder = FingerprintIDConfig.builder()
-                    .setTypeScanner(FingerprintIDConfig.SCANNER_TYPE_KARALUNDI)
-                    .setMaxNfiqValid(5)
-                    .setMaxCaptureAttempts(-1)
-                    .setOptionOptic(false)
-                    .setOptionCamera(false)
+                    .setTypeScanner(FingerprintIDConfig.SCANNER_TYPE_KARALUNDI) //tipo de scanner para la aextracción de la huella.
+                    .setMaxNfiqValid(maxNfiq) //validaciones máximas por mano
+                    .setMaxCaptureAttempts(maxAttempts) //intentos máximos
+                    .setOptionOptic(boolean) //lector optico
+                    .setOptionCamera(bolean) //lector mediante camara
+                    //Dedos a tomar en cuenta
                     .setFingerOptions(new Finger[]{Finger.LEFT_INDEX, Finger.LEFT_MIDDLE, Finger.LEFT_RING, Finger.LEFT_LITTLE, Finger.RIGHT_INDEX, Finger.RIGHT_MIDDLE, Finger.RIGHT_RING, Finger.RIGHT_LITTLE})
-                    //.setFingerOptions(new Finger[] {Finger.LEFT_INDEX})
-                    .addProp("API_KEY", "AIzaSyAlG8ML3lOwPHiqIlte6SUnOuNGzfDFi5g")
-                    .addProp("LICENSE", "com.fad.bio.poc2020-06-15 00 00 00.lic")
-                    .setCloseOnError(false);
+                    .addProp("API_KEY", $APIKEY)
+                    .addProp("LICENSE", $LICENSE)
+                    .setCloseOnError(bolean);
             return builder.build();
        }
 
@@ -498,7 +496,6 @@ Agregamos la dependencia en **build.gradle**:
     **Módulo Enrolamiento :**
 
         dependencies {
-        //enroll
            implementation(group: 'com.na_at.sdk', name: 'enroll', version:  $version , ext: 'aar'){
                transitive = true
            }
@@ -510,9 +507,9 @@ Mostraremos el fragmento de código para el modulo de Enrolamiento.
     private EnrollConfig enrollConfig(){
       return EnrollConfig.builder()
                 .scannerType(EnrollConfig.SCANNER_TYPE_WATSON) //configuración para el tipo de escáner
-                .minFingerCapture(0) //configuración del número mínimo de huellas a capturar
-                .maxCaptureAttempts(3) //intentos máximos de captura
-                .maxValidNfiq(10) //configuración del número máximo de validaciones a ejecutar.
+                .minFingerCapture(min) //configuración del número mínimo de huellas a capturar
+                .maxCaptureAttempts(maxAttempts) //intentos máximos de captura
+                .maxValidNfiq(validaciones_max) //configuración del número máximo de validaciones a ejecutar.
                 .build();
 
     }
@@ -579,7 +576,6 @@ Agregamos la dependencia en **build.gradle**:
    **Módulo Videoconference:**
 
           dependencies {
-                 // videoconference
                  implementation(group: 'com.na_at.sdk', name: 'videoconference', version: $version, ext: 'aar'){
                      transitive = true
                  }
@@ -597,7 +593,7 @@ Mostraremos el fragmento de código para el modulo de Videoconference.
                 .contactNumber(NUMBER)
                 .contactEmail(EMAIL)
                 .setVideoconferenceId("")
-                .setScriptId("4504")
+                .setScriptId(SCRIPT_ID)
                 .build();
     }
 
