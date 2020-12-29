@@ -698,6 +698,10 @@ Agregamos la dependencia en **build.gradle**:
                  implementation(group: 'com.na_at.sdk', name: 'videoconference', version: $version, ext: 'aar'){
                      transitive = true
                  }
+                 // (other dependencies)
+                 mplementation("org.jitsi.react:jitsi-meet-sdk:${rootProject.ext.jitsi}") { transitive = true }
+                 //Calendar
+                 implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
           }
 
 
